@@ -1,6 +1,6 @@
 package com.example.leon.myapp.Views.Registration;
 import com.example.leon.myapp.*;
-import com.example.leon.myapp.Models.Database.UserDbHelper;
+import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;
 import com.example.leon.myapp.Views.Login.LoginActivityView;
 
@@ -24,7 +24,6 @@ public class RegistrationActivityView extends AppCompatActivity {
 
     private EditText editTextFirstName, editTextSecondName, editTextAge, editTextEmailView, editTextPasswordView;
     private Button buttonRegister;
-    private UserDbHelper dbHelper;
     private String registeredEmail;
 
     @Override
@@ -68,7 +67,9 @@ public class RegistrationActivityView extends AppCompatActivity {
         });
     }
 
-    //method called when registration is triggered
+    /**
+     * method called when registration is triggered
+     */
     private void handleRegistrationAction() {
         //reset possible errors
         editTextFirstName.setError(null);
@@ -87,7 +88,10 @@ public class RegistrationActivityView extends AppCompatActivity {
         }
     }
 
-    //check fields for correctness, calls register()
+    /**
+     * check fields for correctness, calls register()
+     * @return registrationSuccessful
+     */
     private boolean attemptRegistration() {
         //get text values
         String firstName = editTextFirstName.getText().toString();
@@ -96,42 +100,67 @@ public class RegistrationActivityView extends AppCompatActivity {
         String email = editTextEmailView.getText().toString();
         String password = editTextPasswordView.getText().toString();
 
-        //indicates if at least one field is invalid
+        //indicates whether at least one field is invalid
         boolean cancel = false;
         //saves the last invalid field
         View focusView = null;
 
-        String error = presenter.validateFirstName(firstName);
-        if (!error.isEmpty()) {
-            editTextFirstName.setError(error);
+        //first name
+        ValidationErrorEnum error = presenter.validateFirstName(firstName);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextFirstName.setError(getString(R.string.error_field_required));
+            focusView = editTextFirstName;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextFirstName.setError(getString(R.string.error_invalid_first_name));
             focusView = editTextFirstName;
             cancel = true;
         }
 
-        error = presenter.validateFirstName(secondName);
-        if (!error.isEmpty()) {
-            editTextSecondName.setError(error);
+        //second name
+        error = presenter.validateSecondName(secondName);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextSecondName.setError(getString(R.string.error_field_required));
+            focusView = editTextSecondName;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextSecondName.setError(getString(R.string.error_invalid_second_name));
             focusView = editTextSecondName;
             cancel = true;
         }
 
+        //age
         error = presenter.validateAge(age);
-        if (!error.isEmpty()) {
-            editTextAge.setError(error);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextAge.setError(getString(R.string.error_field_required));
+            focusView = editTextAge;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextAge.setError(getString(R.string.error_invalid_age));
             focusView = editTextAge;
             cancel = true;
         }
 
+        //email
         error = presenter.validateEmail(email);
-        if (!error.isEmpty()) {
-            editTextEmailView.setError(error);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextEmailView.setError(getString(R.string.error_field_required));
+            focusView = editTextEmailView;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextEmailView.setError(getString(R.string.error_invalid_email));
             focusView = editTextEmailView;
             cancel = true;
         }
 
+        //password
         error = presenter.validatePassword(password);
-        if (!error.isEmpty()) {
-            editTextPasswordView.setError(error);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextPasswordView.setError(getString(R.string.error_field_required));
+            focusView = editTextPasswordView;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = editTextPasswordView;
             cancel = true;
         }
@@ -155,7 +184,10 @@ public class RegistrationActivityView extends AppCompatActivity {
         }
     }
 
-    //give feedback if registration worked
+    /**
+     * give feedback if registration worked
+     * @param success
+     */
     private void showToast(boolean success) {
         Toast toast;
         if (success) {
@@ -167,6 +199,9 @@ public class RegistrationActivityView extends AppCompatActivity {
         toast.show();
     }
 
+    /**
+     * reset field content
+     */
     private void resetFields() {
         editTextFirstName.requestFocus();
         editTextFirstName.setText("");

@@ -12,9 +12,33 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Intent intent = new Intent(this, LoginActivityView.class);
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivityView.class);
+        //Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    protected void onStart() {
+        super.onStart();
+    }
+
+    protected void onResume() {
+        super.onResume();
+    }
+
+    protected void onPause() {
+        super.onPause();
+    }
+
+    protected void onStop() {
+        super.onStop();
+    }
+
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

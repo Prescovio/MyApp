@@ -1,5 +1,6 @@
 package com.example.leon.myapp.Views.Login;
 import com.example.leon.myapp.*;
+import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Login.LoginActivityPresenter;
 import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
@@ -75,7 +76,9 @@ public class LoginActivityView extends AppCompatActivity {
         }
     }
 
-    //method called when login is triggered
+    /**
+     * method called when login is triggered
+     */
     private void handleLoginAction() {
         //reset possible errors
         editTextEmailView.setError(null);
@@ -90,9 +93,12 @@ public class LoginActivityView extends AppCompatActivity {
         }
     }
 
-    //validate fields and call login
+    /**
+     * validate fields and call login
+     * @return loginSuccessful
+     */
     private boolean attemptLogin() {
-        //indicates if at least one field is invalid
+        //indicates whether at least one field is invalid
         boolean cancel = false;
         //saves the last invalid field
         View focusView = null;
@@ -101,16 +107,27 @@ public class LoginActivityView extends AppCompatActivity {
         String email = editTextEmailView.getText().toString();
         String password = editTextPasswordView.getText().toString();
 
-        String error = presenter.validateEmail(email);
-        if (!error.isEmpty()) {
-            editTextEmailView.setError(error);
+
+        //email
+        ValidationErrorEnum error = presenter.validateEmail(email);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextEmailView.setError(getString(R.string.error_field_required));
+            focusView = editTextEmailView;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextEmailView.setError(getString(R.string.error_invalid_email));
             focusView = editTextEmailView;
             cancel = true;
         }
 
+        //password
         error = presenter.validatePassword(password);
-        if (!error.isEmpty()) {
-            editTextPasswordView.setError(error);
+        if (error == ValidationErrorEnum.Empty) {
+            editTextPasswordView.setError(getString(R.string.error_field_required));
+            focusView = editTextPasswordView;
+            cancel = true;
+        } else if (error == ValidationErrorEnum.Invalid) {
+            editTextPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = editTextPasswordView;
             cancel = true;
         }
@@ -129,7 +146,10 @@ public class LoginActivityView extends AppCompatActivity {
         }
     }
 
-    //give feedback if registration worked
+    /**
+     * give feedback whether registration worked
+     * @param success
+     */
     private void showToast(boolean success) {
         Toast toast;
         if (success) {
@@ -141,7 +161,9 @@ public class LoginActivityView extends AppCompatActivity {
         toast.show();
     }
 
-    //reset field content
+    /**
+     * reset field content
+     */
     private void resetFields() {
         editTextEmailView.requestFocus();
         editTextEmailView.setText("");

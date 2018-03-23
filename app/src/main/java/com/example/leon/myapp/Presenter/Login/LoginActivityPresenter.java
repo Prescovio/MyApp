@@ -3,14 +3,12 @@ package com.example.leon.myapp.Presenter.Login;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.TextUtils;
 
 import com.example.leon.myapp.Models.Database.UserDbHelper;
 import com.example.leon.myapp.Models.Database.UserSchema;
-import com.example.leon.myapp.Models.Helper.UserValidation;
-import com.example.leon.myapp.R;
+import com.example.leon.myapp.Presenter.UserValidationPresenterBase;
 
-public class LoginActivityPresenter {
+public class LoginActivityPresenter extends UserValidationPresenterBase {
     private UserDbHelper dbHelper;
     private Context context;
 
@@ -20,7 +18,12 @@ public class LoginActivityPresenter {
         dbHelper = new UserDbHelper(context);
     }
 
-    //perform login
+    /**
+     * login called with user credentials
+     * @param email
+     * @param password
+     * @return boolean
+     */
     public boolean login(String email, String password) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String[] projection = {
@@ -49,37 +52,5 @@ public class LoginActivityPresenter {
             return false;
         else
             return true;
-    }
-
-    public String validateEmail(String email) {
-        String error = "";
-
-        //password empty
-        if (TextUtils.isEmpty(email)) {
-            error = context.getString(R.string.error_field_required);
-
-        }
-        //password invalid
-        if (!UserValidation.isEmailValid(email)) {
-            error = context.getString(R.string.error_invalid_email);
-        }
-
-        return error;
-    }
-
-    public String validatePassword(String password) {
-        String error = "";
-
-        //password empty
-        if (TextUtils.isEmpty(password)) {
-            error = context.getString(R.string.error_field_required);
-
-        }
-        //password invalid
-        if (!UserValidation.isPasswordValid(password)) {
-            error = context.getString(R.string.error_invalid_password);
-        }
-
-        return error;
     }
 }

@@ -21,12 +21,10 @@ public class UserDbHelper extends SQLiteOpenHelper {
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + UserSchema.UserEntry.TABLE_NAME;
 
     public UserDbHelper(Context context) {
-
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     public void onCreate(SQLiteDatabase db) {
-
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 

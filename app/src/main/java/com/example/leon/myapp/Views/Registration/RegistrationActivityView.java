@@ -1,4 +1,5 @@
 package com.example.leon.myapp.Views.Registration;
+
 import com.example.leon.myapp.*;
 import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;

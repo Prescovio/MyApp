@@ -1,8 +1,8 @@
 package com.example.leon.myapp.Views.Login;
 import com.example.leon.myapp.*;
+import com.example.leon.myapp.Views.Main.*;
 import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Login.LoginActivityPresenter;
-import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
 import android.content.Intent;
@@ -16,24 +16,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 public class LoginActivityView extends AppCompatActivity {
     private Intent intentRegister, intentMain;
 
     private EditText editTextEmailView, editTextPasswordView;
     private Button buttonLogin, buttonRegister;
 
-    private LoginActivityPresenter presenter;
+    @Inject
+    protected LoginActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        App.getApp().getDataComponent().inject(this);
+
         //intent to switch to registration or main
         intentRegister = new Intent(this, RegistrationActivityView.class);
         intentMain = new Intent(this, MainActivity.class);
 
-        presenter = new LoginActivityPresenter(getBaseContext());
+        //presenter = new LoginActivityPresenter(getBaseContext());
 
         //get views
         editTextEmailView = (EditText)findViewById(R.id.login_email);
@@ -76,6 +81,12 @@ public class LoginActivityView extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        editTextPasswordView.setText("");
+    }
+
     /**
      * method called when login is triggered
      */
@@ -89,7 +100,6 @@ public class LoginActivityView extends AppCompatActivity {
         showToast(loginSuccessful);
         if (loginSuccessful) {
             startActivity(intentMain);
-            resetFields();
         }
     }
 
@@ -140,6 +150,7 @@ public class LoginActivityView extends AppCompatActivity {
 
             if (!loginSuccessful) {
                 editTextPasswordView.setText("");
+                this.showToast(false);
             }
 
             return loginSuccessful;

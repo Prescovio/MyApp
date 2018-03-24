@@ -45,8 +45,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/password_hint"
                     android:imeActionId="6"
-                    android:imeActionLabel="@string/password_action_label"
-                    android:imeOptions="actionUnspecified"
+                    android:imeActionLabel="@string/login_password_action_label"
+                    android:imeOptions="actionGo"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />

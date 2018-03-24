@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.leon.myapp.Views.Login.LoginActivityView;
-import com.example.leon.myapp.Views.Main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

@@ -18,26 +18,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 public class RegistrationActivityView extends AppCompatActivity {
     private Intent intentLogin;
-
-    private RegistrationActivityPresenter presenter;
 
     private EditText editTextFirstName, editTextSecondName, editTextAge, editTextEmailView, editTextPasswordView;
     private Button buttonRegister;
     private String registeredEmail;
+
+    @Inject
+    protected RegistrationActivityPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        App.getApp().getDataComponent().inject(this);
+
         //intent to return to login
         intentLogin = new Intent(this, LoginActivityView.class);
 
         //presenter
-        presenter = new RegistrationActivityPresenter(getBaseContext());
-
         //get views
         editTextFirstName = (EditText)findViewById(R.id.first_name);
         editTextSecondName = (EditText)findViewById(R.id.second_name);

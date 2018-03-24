@@ -2,14 +2,18 @@ package com.example.leon.myapp.Presenter.Registration;
 
 import android.content.Context;
 
+import com.example.leon.myapp.App;
 import com.example.leon.myapp.Models.Registration.RegistrationActivityModel;
 import com.example.leon.myapp.Presenter.UserValidationPresenterBase;
 
+import javax.inject.Inject;
+
 public class RegistrationActivityPresenter extends UserValidationPresenterBase {
-    private RegistrationActivityModel mRegistrationActivityModel;
+    @Inject
+    protected RegistrationActivityModel mRegistrationActivityModel;
 
     public RegistrationActivityPresenter(Context context) {
-        this.mRegistrationActivityModel = new RegistrationActivityModel(context);
+        App.getApp().getDataComponent().inject(this);
     }
     public boolean userAvailable(String email) {
         return this.mRegistrationActivityModel.userAvailable(email);

@@ -1,11 +1,12 @@
 package com.example.leon.myapp;
 
 import android.app.Application;
-import android.app.Service;
 import android.content.Context;
 
+import com.example.leon.myapp.Models.Login.LoginActivityModel;
+import com.example.leon.myapp.Models.Registration.RegistrationActivityModel;
 import com.example.leon.myapp.Presenter.Login.LoginActivityPresenter;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -28,12 +29,23 @@ public class DataModule {
     }
 
     @Provides
-    public LoginActivityView provideLoginActivityView() {
-        return new LoginActivityView();
-    }
-
-    @Provides
     public LoginActivityPresenter provideLoginActivityPresenter(Context context) {
         return new LoginActivityPresenter(context);
     }
+
+    @Provides
+    public LoginActivityModel provideLoginActivityModel(Context context) {
+        return new LoginActivityModel(context);
+    }
+
+    @Provides
+    public RegistrationActivityPresenter provideRegistrationActivityPresenter(Context context) {
+        return new RegistrationActivityPresenter(context);
+    }
+
+    @Provides
+    public RegistrationActivityModel provideRegistrationActivityModel(Context context) {
+        return new RegistrationActivityModel(context);
+    }
+
 }

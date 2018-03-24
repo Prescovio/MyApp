@@ -8,6 +8,7 @@ import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -37,8 +38,6 @@ public class LoginActivityView extends AppCompatActivity {
         //intent to switch to registration or main
         intentRegister = new Intent(this, RegistrationActivityView.class);
         intentMain = new Intent(this, MainActivity.class);
-
-        //presenter = new LoginActivityPresenter(getBaseContext());
 
         //get views
         editTextEmailView = (EditText)findViewById(R.id.login_email);
@@ -82,9 +81,45 @@ public class LoginActivityView extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
     protected void onPause() {
         super.onPause();
         editTextPasswordView.setText("");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     /**

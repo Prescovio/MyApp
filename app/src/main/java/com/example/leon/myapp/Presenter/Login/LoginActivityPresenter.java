@@ -2,17 +2,18 @@ package com.example.leon.myapp.Presenter.Login;
 
 import android.content.Context;
 
+import com.example.leon.myapp.App;
 import com.example.leon.myapp.Models.Login.LoginActivityModel;
 import com.example.leon.myapp.Presenter.UserValidationPresenterBase;
 
 import javax.inject.Inject;
 
 public class LoginActivityPresenter extends UserValidationPresenterBase {
-    private LoginActivityModel mLoginActivityModel;
-
     @Inject
+    protected LoginActivityModel mLoginActivityModel;
+
     public LoginActivityPresenter(Context context) {
-        this.mLoginActivityModel = new LoginActivityModel(context);
+        App.getApp().getDataComponent().inject(this);
     }
 
     public boolean login(String email, String password) {

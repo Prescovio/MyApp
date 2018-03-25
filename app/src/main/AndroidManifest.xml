@@ -42,9 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Views.Login.LoginActivityView" android:configChanges="keyboardHidden|orientation"/>
-        <activity android:name=".Views.Registration.RegistrationActivityView" android:configChanges="keyboardHidden|orientation"/>
-        <activity android:name=".Views.Main.MainActivity" android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name=".Views.Login.LoginActivityView"/>
+        <activity android:name=".Views.Registration.RegistrationActivityView"/>
+        <activity android:name=".Views.Main.MainActivity"/>
     </application>
 
 </manifest>

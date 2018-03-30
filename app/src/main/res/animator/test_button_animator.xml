@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <set android:ordering="sequentially">
+        <objectAnimator
+            android:propertyName="backgroundColor"
+            android:valueTo="#0066ff"
+            android:valueFrom="#ff0000"
+            android:duration="500"
+            android:startOffset="50"
+            android:repeatCount="1"
+            android:repeatMode="reverse"/>
+        <!--valueType only for int and float-->
+    </set>
+</set>

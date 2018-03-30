@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/btnDefaultFont"/>
+    <item android:state_pressed="true" android:color="@color/btnPressedFont"/>
+    <item android:state_focused="true" android:color="@color/btnFocusedFont"/>
+</selector>

@@ -6,8 +6,8 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="editTextStyle">@style/EditTextStyle</item> <!--???????????-->
-        <item name="android:buttonStyle">@style/ButtonStyle</item>
         <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -20,12 +20,12 @@
     </style>
 
     <style name="EditTextStyle" parent="@android:style/Widget.EditText">
-        <item name="android:textColor">@color/colorFont</item>
-        <item name="android:textColorHint">@color/colorHintFont</item>
+        <item name="android:textColor">@color/editTextFont</item>
+        <item name="android:textColorHint">@color/editTextHintFont</item>
     </style>
 
     <style name="ButtonStyle" parent="@android:style/Widget.Button">
-        <item name="android:textColor">@color/colorFont</item>
+        <item name="android:textColor">@color/color_button_font</item>
     </style>
 
 </resources>

@@ -2,9 +2,8 @@
     <string name="app_name">MyApp</string>
     <string name="activity_main_title">Main Title</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="fragment_name">Login Fragment</string>
-    <string name="title_activity_registration">Register</string>
+    <!--Menu-->
+    <string name="submenu">Submenu</string>
 
     <!--Registration-->
     <string name="first_name_hint">First Name</string>
@@ -30,8 +29,4 @@
     <string name="login_successful">Login successful!</string>
     <string name="login_failed">Login failed</string>
     <string name="login_password_action_label">Login</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 </resources>

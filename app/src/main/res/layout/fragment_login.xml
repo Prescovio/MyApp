@@ -45,21 +45,17 @@
 
         <Button
             android:id="@+id/login_button"
-            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/login_hint"
-            android:textStyle="bold" />
+            android:text="@string/login_hint"/>
 
         <Button
             android:id="@+id/login_register_button"
-            style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/register_hint"
-            android:textStyle="bold" />
+            android:text="@string/register_hint"/>
     </LinearLayout>
 </LinearLayout>
 

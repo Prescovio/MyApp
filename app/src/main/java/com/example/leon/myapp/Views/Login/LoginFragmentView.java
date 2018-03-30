@@ -1,11 +1,16 @@
 package com.example.leon.myapp.Views.Login;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -24,9 +29,6 @@ import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 import javax.inject.Inject;
 
 public class LoginFragmentView extends Fragment {
-
-    private Intent intentRegister, intentMain;
-
     private EditText editTextEmailView, editTextPasswordView;
     private Button buttonLogin, buttonRegister;
 
@@ -58,12 +60,8 @@ public class LoginFragmentView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        //intent to switch to registration or main
-        intentRegister = new Intent(getActivity(), RegistrationActivityView.class);
-        intentMain = new Intent(getActivity(), MainActivity.class);
-
         //get views
-        View view = inflater.inflate(R.layout.fragment_login_fragment_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
 
         editTextEmailView    = view.findViewById(R.id.login_email);
         editTextPasswordView = view.findViewById(R.id.login_password);
@@ -92,7 +90,7 @@ public class LoginFragmentView extends Fragment {
         //set listener on register button
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(intentRegister);
+                startActivity(new Intent(getActivity(), RegistrationActivityView.class));
                 resetFields();
             }
         });
@@ -103,6 +101,12 @@ public class LoginFragmentView extends Fragment {
             editTextEmailView.setText(extras.getString(getString(R.string.registration_email)));
             editTextPasswordView.requestFocus();
         }
+
+
+        //show start animation
+        //AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(getActivity(), R.animator.test_button_animator);
+        //set.setTarget(buttonLogin);
+        //set.start();
 
         return view;
     }
@@ -160,7 +164,7 @@ public class LoginFragmentView extends Fragment {
 
         showToast(loginSuccessful);
         if (loginSuccessful) {
-            startActivity(intentMain);
+            startActivity(new Intent(getActivity(), MainActivity.class));
         }
     }
 

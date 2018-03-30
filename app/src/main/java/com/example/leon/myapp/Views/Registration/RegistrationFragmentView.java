@@ -2,7 +2,6 @@ package com.example.leon.myapp.Views.Registration;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
@@ -20,13 +19,10 @@ import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;
 import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Login.LoginActivityView;
-import com.example.leon.myapp.Views.Main.MainActivity;
 
 import javax.inject.Inject;
 
 public class RegistrationFragmentView extends Fragment {
-    private Intent intentLogin;
-
     private EditText editTextFirstName, editTextSecondName, editTextAge, editTextEmailView, editTextPasswordView;
     private Button buttonRegister;
     private String registeredEmail;
@@ -59,11 +55,8 @@ public class RegistrationFragmentView extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        //intent to return to login
-        intentLogin = new Intent(getActivity(), LoginActivityView.class);
-
         //get views
-        View view = inflater.inflate(R.layout.fragment_registration_fragment_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_registration, container, false);
 
         editTextFirstName    = view.findViewById(R.id.first_name);
         editTextSecondName   = view.findViewById(R.id.second_name);
@@ -151,6 +144,7 @@ public class RegistrationFragmentView extends Fragment {
 
         showToast(registrationSuccessful);
         if (registrationSuccessful) {
+            Intent intentLogin = new Intent(getActivity(), LoginActivityView.class);
             intentLogin.putExtra(getString(R.string.registration_email), registeredEmail);
             startActivity(intentLogin);
             resetFields();

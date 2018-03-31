@@ -2,8 +2,12 @@
     <string name="app_name">MyApp</string>
     <string name="activity_main_title">Main Title</string>
 
+    <!--Toolbar-->
+    <string name="mika">Mika</string>
+    <string name="toolbar_title">Toolbar Title</string>
+
     <!--Menu-->
-    <string name="submenu">Submenu</string>
+    <string name="logout">Logout</string>
 
     <!--Registration-->
     <string name="first_name_hint">First Name</string>

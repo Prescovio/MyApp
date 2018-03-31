@@ -165,6 +165,7 @@ public class LoginFragmentView extends Fragment {
         showToast(loginSuccessful);
         if (loginSuccessful) {
             startActivity(new Intent(getActivity(), MainActivity.class));
+            getActivity().finish();
         }
     }
 

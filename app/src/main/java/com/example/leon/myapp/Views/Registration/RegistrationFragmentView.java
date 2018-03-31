@@ -148,6 +148,7 @@ public class RegistrationFragmentView extends Fragment {
             intentLogin.putExtra(getString(R.string.registration_email), registeredEmail);
             startActivity(intentLogin);
             resetFields();
+            getActivity().finish();
         }
     }
 

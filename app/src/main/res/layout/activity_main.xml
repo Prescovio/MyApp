@@ -1,64 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.leon.myapp.Views.Main.MainActivity">
-    <ScrollView
+
+    <include layout="@layout/activity_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:orientation="vertical"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/selectedTabFont"
+        app:tabTextColor="@color/colorFont">
+
+        <android.support.design.widget.TabItem
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:id="@+id/tab1"
+            android:icon="@drawable/mika"
+            android:text="Tab 1" />
 
-            <include
-                android:id="@+id/main_toolbar"
-                layout="@layout/activity_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <android.support.design.widget.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tab2"
+            android:icon="@drawable/mika"
+            android:text="Tab 2" />
 
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+    </android.support.design.widget.TabLayout>
 
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:text="@string/mika"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

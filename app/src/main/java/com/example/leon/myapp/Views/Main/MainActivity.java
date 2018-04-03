@@ -5,10 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -34,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(3);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(MainFragmentViewOne.newInstance(),"One");
-        adapter.addFragment(MainFragmentViewTwo.newInstance(),"Two");
+        adapter.addFragment(ListFragment.newInstance(),"One");
+        adapter.addFragment(CustomListFragment.newInstance(),"Two");
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);

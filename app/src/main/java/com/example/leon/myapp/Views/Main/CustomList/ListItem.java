@@ -1,4 +1,4 @@
-package com.example.leon.myapp.Views.Main;
+package com.example.leon.myapp.Views.Main.CustomList;
 
 /**
  * Created by Leon on 03.04.2018.

@@ -1,4 +1,4 @@
-package com.example.leon.myapp.Views.Main;
+package com.example.leon.myapp.Views.Main.CustomList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -57,7 +57,7 @@ public class CustomListAdapter extends BaseAdapter {
         rowView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, mItems.get(position).getText(), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, mItems.get(position).getText(), Toast.LENGTH_SHORT).show();
             }
         });
         return rowView;

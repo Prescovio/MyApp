@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.leon.myapp.Views.Main.CustomListFragment">
+    tools:context="com.example.leon.myapp.Views.Main.CustomList.CustomListFragment">
 
     <ListView
         android:id="@+id/custom_list_list_view"

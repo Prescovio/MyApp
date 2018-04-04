@@ -15,6 +15,8 @@ import android.view.MenuItem;
 
 import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
+import com.example.leon.myapp.Views.Main.DefaultList.ListFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setOffscreenPageLimit(3);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(ListFragment.newInstance(),"One");
-        adapter.addFragment(CustomListFragment.newInstance(),"Two");
+        adapter.addFragment(ListFragment.newInstance(),"DefaultList");
+        adapter.addFragment(CustomListFragment.newInstance(),"CustomList");
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);

@@ -1,4 +1,4 @@
-package com.example.leon.myapp.Views.Main;
+package com.example.leon.myapp.Views.Main.CustomList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

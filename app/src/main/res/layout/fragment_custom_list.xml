@@ -7,6 +7,11 @@
     <ListView
         android:id="@+id/custom_list_list_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:fastScrollEnabled="true"
+        android:persistentDrawingCache="scrolling"
+        android:scrollingCache="false"/>
 
 </LinearLayout>

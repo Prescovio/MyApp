@@ -44,22 +44,56 @@ public class CustomListAdapter extends BaseAdapter {
     }
 
     @Override
+    public int getViewTypeCount() {
+
+        return mItems.size();
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+
+        return position;
+    }
+
+    @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View rowView;
-        rowView = mLayoutInflater.inflate(R.layout.fragment_custom_list_item, null);
+        ViewHolder viewHolder;
 
-        ImageView imageView = rowView.findViewById(R.id.list_item_image_view);
-        TextView textView = rowView.findViewById(R.id.list_item_text_view);
+        if (convertView == null) {
+            convertView = mLayoutInflater.inflate(R.layout.fragment_custom_list_item, null);
 
-        imageView.setImageDrawable(mContext.getDrawable(mItems.get(position).getImageId()));
-        textView.setText(mItems.get(position).getText());
+            viewHolder = new ViewHolder(convertView);
 
-        rowView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(mContext, mItems.get(position).getText(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        return rowView;
+            viewHolder.imageView.setImageDrawable(mContext.getDrawable(mItems.get(position).getImageId()));
+            viewHolder.textView.setText(mItems.get(position).getText());
+
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(mContext, mItems.get(position).getText(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder)convertView.getTag();
+        }
+
+        ListItem currentItem = (ListItem)mItems.get(position);
+
+        viewHolder.imageView.setImageDrawable(mContext.getDrawable(currentItem.getImageId()));
+        viewHolder.textView.setText(currentItem.getText());
+
+        return convertView;
+    }
+
+    private class ViewHolder {
+        ImageView imageView;
+        TextView textView;
+
+        public ViewHolder(View view) {
+            imageView = view.findViewById(R.id.list_item_image_view);
+            textView = view.findViewById(R.id.list_item_text_view);
+        }
     }
 }

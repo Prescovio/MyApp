@@ -35,15 +35,22 @@ public class CustomListFragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.custom_list_list_view);
 
-
-        listItems.add(new ListItem(R.drawable.mercury, "Merkur"));
-        listItems.add(new ListItem(R.drawable.venus, "Venus"));
-        listItems.add(new ListItem(R.drawable.earth, "Erde"));
-        listItems.add(new ListItem(R.drawable.mars, "Mars"));
-        listItems.add(new ListItem(R.drawable.jupiter, "Jupiter"));
-        listItems.add(new ListItem(R.drawable.saturn, "Saturn"));
-        listItems.add(new ListItem(R.drawable.uranus, "Uranus"));
-        listItems.add(new ListItem(R.drawable.neptune, "Neptun"));
+        listItems.add(new ListItem(R.drawable.mercury, getString(R.string.mercury)));
+        listItems.add(new ListItem(R.drawable.venus, getString(R.string.venus)));
+        listItems.add(new ListItem(R.drawable.earth, getString(R.string.earth)));
+        listItems.add(new ListItem(R.drawable.mars, getString(R.string.mars)));
+        listItems.add(new ListItem(R.drawable.jupiter, getString(R.string.jupiter)));
+        listItems.add(new ListItem(R.drawable.saturn, getString(R.string.saturn)));
+        listItems.add(new ListItem(R.drawable.uranus, getString(R.string.uranus)));
+        listItems.add(new ListItem(R.drawable.neptune, getString(R.string.neptune)));
+        listItems.add(new ListItem(R.drawable.mercury, getString(R.string.mercury)));
+        listItems.add(new ListItem(R.drawable.venus, getString(R.string.venus)));
+        listItems.add(new ListItem(R.drawable.earth, getString(R.string.earth)));
+        listItems.add(new ListItem(R.drawable.mars, getString(R.string.mars)));
+        listItems.add(new ListItem(R.drawable.jupiter, getString(R.string.jupiter)));
+        listItems.add(new ListItem(R.drawable.saturn, getString(R.string.saturn)));
+        listItems.add(new ListItem(R.drawable.uranus, getString(R.string.uranus)));
+        listItems.add(new ListItem(R.drawable.neptune, getString(R.string.neptune)));
 
         listView.setAdapter(new CustomListAdapter(inflater, getActivity(), listItems));
 

@@ -1,19 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.leon.myapp.Views.Main.Practice.Service.ServiceActivity">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLoadServiceActivity"
-        android:text="@string/load_service_activity"/>
+        android:id="@+id/btnStartService"
+        android:text="@string/start_service" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnLoadNotificationActivity"
-        android:text="@string/load_notification_activity"/>
+        android:id="@+id/btnStopService"
+        android:text="@string/stop_service" />
 
 </LinearLayout>

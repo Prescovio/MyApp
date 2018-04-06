@@ -34,6 +34,7 @@
             <meta-data />
         </activity>
         -->
+
         <activity
             android:name=".Views.SplashScreen.SplashActivity"
             android:noHistory="true"
@@ -50,7 +51,14 @@
         <activity
             android:name=".Views.Registration.RegistrationActivityView"
             android:theme="@style/LoginScreenTheme" />
-        <activity android:name=".Views.Main.MainActivity" />
+        <activity android:name=".Views.Main.MainActivity"
+            android:configChanges="orientation"/>
+        <activity android:name=".Views.Main.Practice.Service.ServiceActivity" />
+
+        <!-- Services -->
+        <service android:name=".Views.Main.Practice.Service.MyService" />
+
+        <activity android:name=".Views.Main.Practice.Notification.NotificationActivity"></activity>
     </application>
 
 </manifest>

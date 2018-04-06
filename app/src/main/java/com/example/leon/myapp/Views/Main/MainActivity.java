@@ -17,24 +17,31 @@ import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Login.LoginActivityView;
 import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Main.DefaultList.ListFragment;
+import com.example.leon.myapp.Views.Main.Practice.PracticeFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
 public class MainActivity extends AppCompatActivity {
     IntentFilter intentFilter;
     BroadcastReceiver broadcastReceiver;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PracticeFragment practiceFragment = PracticeFragment.newInstance();
+        ListFragment listFragment = ListFragment.newInstance();
+        CustomListFragment customListFragment = CustomListFragment.newInstance();
 
         //Initializing viewPager
         ViewPager viewPager = (ViewPager)findViewById(R.id.main_viewpager);
         viewPager.setOffscreenPageLimit(3);
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(ListFragment.newInstance(),"DefaultList");
-        adapter.addFragment(CustomListFragment.newInstance(),"CustomList");
+        adapter.addFragment(practiceFragment, getString(R.string.practice_fragment));
+        adapter.addFragment(listFragment, getString(R.string.default_list));
+        adapter.addFragment(customListFragment, getString(R.string.custom_list));
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
@@ -48,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 
     @Override
@@ -91,8 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 sendBroadcast(broadcastIntent);
 
                 startActivity(new Intent(this, LoginActivityView.class));
+
+                break;
             case R.id.mika:
                 startActivity(new Intent(this, RegistrationActivityView.class));
+
+                break;
             default:
                 super.onOptionsItemSelected(item);
         }

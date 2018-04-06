@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyApp</string>
-    <string name="activity_main_title">Main Title</string>
 
     <!--Toolbar-->
     <string name="mika">Mika</string>
@@ -10,6 +9,7 @@
     <string name="logout">Logout</string>
 
     <!--Registration-->
+    <string name="activity_registration_title">Registration</string>
     <string name="first_name_hint">First Name</string>
     <string name="second_name_hint">Second Name</string>
     <string name="age_hint">Age</string>
@@ -29,10 +29,38 @@
     <string name="registration_email">Registration Email</string>
 
     <!--Login-->
+    <string name="activity_login_title">Login</string>
     <string name="login_hint">Login</string>
     <string name="login_successful">Login successful!</string>
     <string name="login_failed">Login failed</string>
     <string name="login_password_action_label">Login</string>
 
+    <!--Main-->
+    <string name="activity_main_title">Main</string>
+
+    <!--Listviews-->
+    <string name="mercury">Mercury</string>
+    <string name="venus">Venus</string>
+    <string name="earth">Earth</string>
+    <string name="mars">Mars</string>
+    <string name="jupiter">Jupiter</string>
+    <string name="saturn">Saturn</string>
+    <string name="uranus">Uranus</string>
+    <string name="neptune">Neptune</string>
+
     <!--Practice-->
+    <string name="practice_fragment">Practice Fragment</string>
+    <string name="default_list">Default List</string>
+    <string name="custom_list">Custom List</string>
+    <string name="load_service_activity">Load Service Activity</string>
+    <string name="load_notification_activity">Load Notification Activity</string>
+
+    <!--Service-->
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+
+    <!--Notification-->
+    <string name="create_notification">Create notification</string>
+    <string name="create_progressbar_notification">Create progressbar notification</string>
+    <string name="create_expanded_notification">Create expanded notification</string>
 </resources>

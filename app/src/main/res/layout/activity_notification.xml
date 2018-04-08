@@ -25,4 +25,10 @@
         android:id="@+id/btnCreateExpandedNotification"
         android:text="@string/create_expanded_notification" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateCustomNotification"
+        android:text="@string/create_custom_notification" />
+
 </LinearLayout>

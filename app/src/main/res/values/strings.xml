@@ -27,6 +27,7 @@
     <string name="registration_successful">Registration successful!</string>
     <string name="registration_failed">Registration failed</string>
     <string name="registration_email">Registration Email</string>
+    <string name="back_to_login">Back to Login</string>
 
     <!--Login-->
     <string name="activity_login_title">Login</string>
@@ -63,4 +64,5 @@
     <string name="create_notification">Create notification</string>
     <string name="create_progressbar_notification">Create progressbar notification</string>
     <string name="create_expanded_notification">Create expanded notification</string>
+    <string name="create_custom_notification">Create Custom Notification</string>
 </resources>

@@ -3,6 +3,8 @@ package com.example.leon.myapp.Views.Main.Practice.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +42,13 @@ public class NotificationActivity extends AppCompatActivity {
         createExpandedNotification.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onCreateExpandedNotificationClick(view);
+            }
+        });
+
+        Button createCustomNotification = (Button)findViewById(R.id.btnCreateCustomNotification);
+        createCustomNotification.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onCreateCustomNotificationClick(view);
             }
         });
     }
@@ -97,6 +106,7 @@ public class NotificationActivity extends AppCompatActivity {
         mBuilder.setProgress(100, 0, false);
         notificationManager.notify(count, mBuilder.build());
 
+        //what needs to be done to update progress
         new Thread(new Runnable() {
             public void run() {
                 // a potentially  time consuming task
@@ -129,5 +139,32 @@ public class NotificationActivity extends AppCompatActivity {
      * @param view
      */
     public void onCreateExpandedNotificationClick(View view) {
+        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mika);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.mika)
+                .setContentTitle("Content Title")
+                .setContentText("Content")
+                .setLargeIcon(myBitmap)
+                //.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(myBitmap).bigLargeIcon(null))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."));
+                //.setStyle(new NotificationCompat.InboxStyle().addLine("First line message summary").addLine("Second line message summary"))
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+        //notification sadly doesn't disapear on action click
+        //have not found a proper solution
+
+        notificationManager.notify(count++, mBuilder.build());
     }
+
+    /**
+     * creates custom notification
+     * @param view
+     */
+    public void onCreateCustomNotificationClick(View view) {
+    }
+
+    //TODO custom notification
+
+    //TODO group notifications
 }

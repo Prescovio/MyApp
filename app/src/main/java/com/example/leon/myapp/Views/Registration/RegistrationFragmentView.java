@@ -24,7 +24,7 @@ import javax.inject.Inject;
 
 public class RegistrationFragmentView extends Fragment {
     private EditText editTextFirstName, editTextSecondName, editTextAge, editTextEmailView, editTextPasswordView;
-    private Button buttonRegister;
+    private Button buttonRegister, buttonLogin;
     private String registeredEmail;
 
     @Inject
@@ -64,6 +64,7 @@ public class RegistrationFragmentView extends Fragment {
         editTextEmailView    = view.findViewById(R.id.email);
         editTextPasswordView = view.findViewById(R.id.password);
         buttonRegister       = view.findViewById(R.id.register_button);
+        buttonLogin          = view.findViewById(R.id.back_to_login_button);
 
         //set listener on last editbox
         editTextPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -83,6 +84,13 @@ public class RegistrationFragmentView extends Fragment {
             @Override
             public void onClick(View view) {
                 handleRegistrationAction();
+            }
+        });
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LoginActivityView.class));
             }
         });
 

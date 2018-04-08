@@ -1,6 +1,7 @@
 package com.example.leon.myapp.Views.Main.Practice.Service;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,11 +10,17 @@ import android.widget.Button;
 import com.example.leon.myapp.*;
 
 public class ServiceActivity extends AppCompatActivity {
+    Intent serviceIntent;
+    Intent intentServiceIntent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service);
+
+        serviceIntent = new Intent(this, MyService.class);
+        intentServiceIntent = new Intent(this, MyIntentService.class);
 
         Button startService = (Button)findViewById(R.id.btnStartService);
         startService.setOnClickListener(new View.OnClickListener() {
@@ -35,8 +42,16 @@ public class ServiceActivity extends AppCompatActivity {
      * @param view
      */
     public void onStartServiceClick(View view) {
-        startService(new Intent(this, MyService.class));
-        startService(new Intent(this, MyIntentService.class));
+        startService(serviceIntent);
+        startService(intentServiceIntent);
+
+        //TODO foreground service
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            startForegroundService(new Intent(this, MyIntentService.class));
+        }
+
+        //TODO bound service
     }
 
     /**
@@ -44,7 +59,7 @@ public class ServiceActivity extends AppCompatActivity {
      * @param view
      */
      public void onStopServiceClick(View view) {
-        stopService(new Intent(this, MyService.class));
-        stopService(new Intent(this, MyIntentService.class));
+        stopService(serviceIntent);
+        stopService(intentServiceIntent);
     }
 }

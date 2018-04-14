@@ -8,5 +8,5 @@ import android.view.View;
 
 public interface PracticeFragmentInteractionListener {
     void onLoadServiceActivityClick(View view);
-    void onLoadNotificationActitivyClick(View view);
+    void onLoadNotificationActivityClick(View view);
 }

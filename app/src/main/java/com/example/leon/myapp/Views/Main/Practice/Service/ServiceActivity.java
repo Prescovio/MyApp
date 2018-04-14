@@ -52,6 +52,8 @@ public class ServiceActivity extends AppCompatActivity {
         }
 
         //TODO bound service
+
+        //TODO Job Scheduler
     }
 
     /**

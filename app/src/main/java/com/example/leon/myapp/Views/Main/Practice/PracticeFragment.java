@@ -46,7 +46,7 @@ public class PracticeFragment extends Fragment {
         Button loadNotificationActivity = view.findViewById(R.id.btnLoadNotificationActivity);
         loadNotificationActivity.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onLoadNotificationActitivyClick(v);
+                onLoadNotificationActivityClick(v);
             }
         });
 
@@ -67,7 +67,7 @@ public class PracticeFragment extends Fragment {
         startActivity(new Intent(getActivity(), ServiceActivity.class));
     }
 
-    public void onLoadNotificationActitivyClick(View view) {
+    public void onLoadNotificationActivityClick(View view) {
         startActivity(new Intent(getActivity(), NotificationActivity.class));
     }
 }

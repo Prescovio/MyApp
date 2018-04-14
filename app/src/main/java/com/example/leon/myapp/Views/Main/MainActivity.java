@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,11 @@ import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 public class MainActivity extends AppCompatActivity {
     IntentFilter intentFilter;
     BroadcastReceiver broadcastReceiver;
+    FragmentManager fragmentManager;
+    ViewPager viewPager;
+    ViewPagerAdapter adapter;
 
+    int currentTab = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +40,33 @@ public class MainActivity extends AppCompatActivity {
         CustomListFragment customListFragment = CustomListFragment.newInstance();
 
         //Initializing viewPager
-        ViewPager viewPager = (ViewPager)findViewById(R.id.main_viewpager);
+        viewPager = (ViewPager)findViewById(R.id.main_viewpager);
         viewPager.setOffscreenPageLimit(3);
 
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        fragmentManager = getSupportFragmentManager();
+        adapter = new ViewPagerAdapter(fragmentManager);
         adapter.addFragment(practiceFragment, getString(R.string.practice_fragment));
         adapter.addFragment(listFragment, getString(R.string.default_list));
         adapter.addFragment(customListFragment, getString(R.string.custom_list));
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                currentTab = position;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        //TODO add navigation to fragments
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
@@ -55,6 +79,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (currentTab > 0)
+        {
+            currentTab = 0;
+            viewPager.setCurrentItem(currentTab, true);
+        }
+        else
+            super.onBackPressed();
     }
 
     @Override
@@ -73,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (currentTab > 0)
+            viewPager.setCurrentItem(currentTab);
 
         intentFilter = new IntentFilter();
         intentFilter.addAction("com.package.ACTION_LOGOUT");

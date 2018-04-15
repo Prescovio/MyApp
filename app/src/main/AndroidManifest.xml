@@ -51,14 +51,16 @@
         <activity
             android:name=".Views.Registration.RegistrationActivityView"
             android:theme="@style/LoginScreenTheme" />
-        <activity android:name=".Views.Main.MainActivity"
-            android:configChanges="orientation"/>
+        <activity
+            android:name=".Views.Main.MainActivity"
+            android:configChanges="orientation" />
         <activity android:name=".Views.Main.Practice.Service.ServiceActivity" />
 
         <!-- Services -->
         <service android:name=".Views.Main.Practice.Service.MyService" />
 
-        <activity android:name=".Views.Main.Practice.Notification.NotificationActivity"></activity>
+        <activity android:name=".Views.Main.Practice.Notification.NotificationActivity" />
+        <activity android:name=".Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity"></activity>
     </application>
 
 </manifest>

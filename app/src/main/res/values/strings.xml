@@ -55,6 +55,7 @@
     <string name="custom_list">Custom List</string>
     <string name="load_service_activity">Load Service Activity</string>
     <string name="load_notification_activity">Load Notification Activity</string>
+    <string name="load_navigation_drawer_activity">Load Navigation Drawer Activity</string>
 
     <!--Service-->
     <string name="start_service">Start Service</string>
@@ -65,4 +66,7 @@
     <string name="create_progressbar_notification">Create progressbar notification</string>
     <string name="create_expanded_notification">Create expanded notification</string>
     <string name="create_custom_notification">Create Custom Notification</string>
+
+    <!--Navgiation Drawer-->
+
 </resources>

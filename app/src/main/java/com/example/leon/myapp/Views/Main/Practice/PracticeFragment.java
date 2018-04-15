@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.leon.myapp.R;
+import com.example.leon.myapp.Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.Notification.NotificationActivity;
 import com.example.leon.myapp.Views.Main.Practice.Service.ServiceActivity;
 
@@ -50,6 +51,14 @@ public class PracticeFragment extends Fragment {
             }
         });
 
+        //LoadNavigationDrawerActivity
+        Button loadNavigationDrawerActivity = view.findViewById(R.id.btnLoadNavigationDrawerActivity);
+        loadNavigationDrawerActivity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onLoadNavigationDrawerActivityClick(v);
+            }
+        });
+
         return view;
     }
 
@@ -69,5 +78,9 @@ public class PracticeFragment extends Fragment {
 
     public void onLoadNotificationActivityClick(View view) {
         startActivity(new Intent(getActivity(), NotificationActivity.class));
+    }
+
+    public void onLoadNavigationDrawerActivityClick(View view) {
+        startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
     }
 }

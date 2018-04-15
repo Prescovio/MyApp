@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,6 +99,9 @@ public class NotificationActivity extends AppCompatActivity {
     public void onCreateProgressbarNotificationClick(View view) {
         final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
                 .setSmallIcon(R.drawable.mika)
+                .setOngoing(false)
+                .setAutoCancel(true)
+                .setColor(Color.RED)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         final NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
@@ -107,7 +111,9 @@ public class NotificationActivity extends AppCompatActivity {
         notificationManager.notify(count, mBuilder.build());
 
         //what needs to be done to update progress
-        new Thread(new Runnable() {
+
+        Thread thread = new Thread() {
+            int currentCount = count++;
             public void run() {
                 // a potentially  time consuming task
                 try {
@@ -115,23 +121,29 @@ public class NotificationActivity extends AppCompatActivity {
 
                     while (countTime < 100)
                     {
+                        if (Thread.interrupted())
+                            return;
                         Thread.sleep(1000);
                         countTime += 10;
                         mBuilder.setContentText(String.valueOf(countTime))
                                 .setProgress(100,countTime,false);
-                        notificationManager.notify(count, mBuilder.build());
+                        notificationManager.notify(currentCount, mBuilder.build());
                     }
 
                     // When done, update the notification one more time to remove the progress bar
                     mBuilder.setContentText("Download complete")
                             .setProgress(0,0,false);
-                    notificationManager.notify(count, mBuilder.build());
+                    notificationManager.notify(currentCount, mBuilder.build());
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        };
+        thread.start();
+
+        //thread.interrupt();
+        //notificationManager.cancel(count-1);
     }
 
     /**

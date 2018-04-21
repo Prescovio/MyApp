@@ -66,7 +66,23 @@
     <string name="create_progressbar_notification">Create progressbar notification</string>
     <string name="create_expanded_notification">Create expanded notification</string>
     <string name="create_custom_notification">Create Custom Notification</string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
     <!--Navgiation Drawer-->
+    <string name="drawer_header">Drawer Header</string>
+    <string name="drawer_header_content">Drawer Header Content</string>
+    <string name="planets">Planets</string>
+    <string name="different">Different</string>
+    <string name="communicate">Communicate</string>
+    <string name="gallery">Gallery</string>
+    <string name="slideshow">SlideShow</string>
+    <string name="tools">Tools</string>
+    <string name="share">Share</string>
+    <string name="send">Send</string>
 
 </resources>

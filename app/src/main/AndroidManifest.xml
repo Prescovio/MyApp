@@ -60,7 +60,7 @@
         <service android:name=".Views.Main.Practice.Service.MyService" />
 
         <activity android:name=".Views.Main.Practice.Notification.NotificationActivity" />
-        <activity android:name=".Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity"></activity>
+        <activity android:name=".Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity" />
     </application>
 
 </manifest>

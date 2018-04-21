@@ -82,6 +82,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         }
     }
 

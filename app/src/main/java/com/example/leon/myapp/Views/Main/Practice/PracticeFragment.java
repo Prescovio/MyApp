@@ -82,5 +82,6 @@ public class PracticeFragment extends Fragment {
 
     public void onLoadNavigationDrawerActivityClick(View view) {
         startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 }

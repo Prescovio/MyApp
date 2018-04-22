@@ -4,30 +4,23 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_mercury"
-                    android:icon="@drawable/mercury"
-                    android:title="@string/mercury" />
+                    android:id="@+id/nav_good_mode"
+                    android:icon="@drawable/ic_good_mode"
+                    android:title="@string/good_mood" />
                 <item
-                    android:id="@+id/nav_venus"
-                    android:icon="@drawable/venus"
-                    android:title="@string/venus" />
+                    android:id="@+id/nav_neutral_mood"
+                    android:icon="@drawable/ic_neutral_mood"
+                    android:title="@string/neutral_mood" />
                 <item
-                    android:id="@+id/nav_earth"
-                    android:icon="@drawable/earth"
-                    android:title="@string/earth" />
-                <item
-                    android:id="@+id/nav_mars"
-                    android:icon="@drawable/mars"
-                    android:title="@string/mars" />
+                    android:id="@+id/nav_bad_mood"
+                    android:icon="@drawable/ic_bad_mood"
+                    android:title="@string/bad_mood" />
             </group>
         </menu>
     </item>
 
     <item android:title="@string/different">
          <menu>
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
              <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_gallery"

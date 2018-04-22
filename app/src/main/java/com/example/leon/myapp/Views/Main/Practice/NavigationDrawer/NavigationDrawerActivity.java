@@ -27,9 +27,9 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout);
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -43,17 +43,14 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                         // For example, swap UI fragments here
 
                         switch (menuItem.getItemId()) {
-                            case R.id.nav_mercury:
-                                Toast.makeText(getBaseContext(), getString(R.string.mercury), Toast.LENGTH_SHORT).show();
+                            case R.id.nav_good_mode:
+                                Toast.makeText(getBaseContext(), getString(R.string.good_mood), Toast.LENGTH_SHORT).show();
                                 break;
-                            case R.id.nav_venus:
-                                Toast.makeText(getBaseContext(), getString(R.string.venus), Toast.LENGTH_SHORT).show();
+                            case R.id.nav_neutral_mood:
+                                Toast.makeText(getBaseContext(), getString(R.string.neutral_mood), Toast.LENGTH_SHORT).show();
                                 break;
-                            case R.id.nav_earth:
-                                Toast.makeText(getBaseContext(), getString(R.string.earth), Toast.LENGTH_SHORT).show();
-                                break;
-                            case R.id.nav_mars:
-                                Toast.makeText(getBaseContext(), getString(R.string.mars), Toast.LENGTH_SHORT).show();
+                            case R.id.nav_bad_mood:
+                                Toast.makeText(getBaseContext(), getString(R.string.bad_mood), Toast.LENGTH_SHORT).show();
                                 break;
                         }
 
@@ -61,7 +58,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                     }
                 });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,12 +74,11 @@ public class NavigationDrawerActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
         }
     }
 

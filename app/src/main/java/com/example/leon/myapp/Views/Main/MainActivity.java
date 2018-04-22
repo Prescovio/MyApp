@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //TODO add navigation to fragments
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
 

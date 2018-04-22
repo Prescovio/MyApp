@@ -84,5 +84,8 @@
     <string name="tools">Tools</string>
     <string name="share">Share</string>
     <string name="send">Send</string>
+    <string name="good_mood">Good Mood</string>
+    <string name="neutral_mood">Neutral Mood</string>
+    <string name="bad_mood">Bad Mood</string>
 
 </resources>

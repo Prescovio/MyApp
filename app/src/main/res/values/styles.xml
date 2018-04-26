@@ -17,8 +17,8 @@
     </style>
 
     <!--Activity styles-->
-    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowBackground">@mipmap/ic_launcher</item>
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/mika</item>
     </style>
 
     <!--Animation style-->
@@ -68,9 +68,5 @@
         <item name="android:textColor">@color/color_button_font</item>
         <!--<item name="android:font">@font/font_button</item> api lvl not high enough-->
     </style>
-
-    <style name="MyAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="MyAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

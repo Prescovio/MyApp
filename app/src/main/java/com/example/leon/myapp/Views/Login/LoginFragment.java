@@ -1,16 +1,11 @@
 package com.example.leon.myapp.Views.Login;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -28,19 +23,19 @@ import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
 import javax.inject.Inject;
 
-public class LoginFragmentView extends Fragment {
+public class LoginFragment extends Fragment {
     private EditText editTextEmailView, editTextPasswordView;
     private Button buttonLogin, buttonRegister;
 
     @Inject
     protected LoginActivityPresenter presenter;
 
-    public LoginFragmentView() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 
-    public static LoginFragmentView newInstance() {
-        LoginFragmentView fragment = new LoginFragmentView();
+    public static LoginFragment newInstance() {
+        LoginFragment fragment = new LoginFragment();
         return fragment;
     }
 

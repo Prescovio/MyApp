@@ -15,7 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.leon.myapp.R;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Main.DefaultList.ListFragment;
 import com.example.leon.myapp.Views.Main.Practice.PracticeFragment;
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
                 sendBroadcast(broadcastIntent);
 
-                startActivity(new Intent(this, LoginActivityView.class));
+                startActivity(new Intent(this, LoginActivity.class));
 
                 break;
             case R.id.mika:

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-public class LoginActivityView extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,8 +18,8 @@ public class LoginActivityView extends AppCompatActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-            LoginFragmentView loginFragmentView = LoginFragmentView.newInstance();
-            fragmentTransaction.add(R.id.login_activity_fragment_container, loginFragmentView);
+            LoginFragment loginFragment = LoginFragment.newInstance();
+            fragmentTransaction.add(R.id.login_activity_fragment_container, loginFragment);
             fragmentTransaction.commit();
         }
     }

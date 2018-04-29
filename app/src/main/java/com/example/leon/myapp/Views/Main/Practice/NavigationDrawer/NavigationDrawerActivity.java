@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.leon.myapp.*;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
 public class NavigationDrawerActivity extends AppCompatActivity {
@@ -102,7 +102,7 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
                 sendBroadcast(broadcastIntent);
 
-                startActivity(new Intent(this, LoginActivityView.class));
+                startActivity(new Intent(this, LoginActivity.class));
 
                 break;
             case R.id.mika:

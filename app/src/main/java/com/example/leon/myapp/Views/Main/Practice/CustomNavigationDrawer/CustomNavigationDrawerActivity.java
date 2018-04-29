@@ -1,7 +1,6 @@
 package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,8 +15,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.leon.myapp.*;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Views.Login.LoginActivity;
+import com.example.leon.myapp.Views.Login.LoginFragment;
+import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
+import com.example.leon.myapp.Views.Registration.RegistrationFragmentView;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -27,8 +29,6 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
     private ArrayList<CustomNavigationListItem> mItems = new ArrayList<>();
     private CustomNavigationListAdapter adapter;
     private ListView mMenuListView;
-    private NavigationView mNavigationView;
-    private View mCurrentItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,6 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_custom_navigation_drawer);
 
         drawerLayout = findViewById(R.id.custom_drawer_layout);
-        mNavigationView = findViewById(R.id.custom_nav_view);
 
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -45,9 +44,9 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         ListView listView = findViewById(R.id.navigation_drawer_list_view);
 
         LinkedHashMap<String, Fragment> menuItems = new LinkedHashMap<>();
-        menuItems.put("MenuItem1", new DummyFragment());
-        menuItems.put("MenuItem2", new DummyFragment());
-        menuItems.put("MenuItem3", new DummyFragment());
+        menuItems.put("MenuItem1", new LoginFragment());
+        menuItems.put("MenuItem2", new RegistrationFragmentView());
+        menuItems.put("MenuItem3", new CustomListFragment());
         menuItems.put("MenuItem4", new DummyFragment());
 
         mItems.add(new CustomNavigationListItem("FirstItem", R.drawable.earth, menuItems, true));
@@ -100,7 +99,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
                 sendBroadcast(broadcastIntent);
 
-                startActivity(new Intent(this, LoginActivityView.class));
+                startActivity(new Intent(this, LoginActivity.class));
 
                 break;
             case R.id.mika:

@@ -18,7 +18,7 @@ import com.example.leon.myapp.App;
 import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;
 import com.example.leon.myapp.R;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
+import com.example.leon.myapp.Views.Login.LoginActivity;
 
 import javax.inject.Inject;
 
@@ -90,7 +90,7 @@ public class RegistrationFragmentView extends Fragment {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), LoginActivityView.class));
+                startActivity(new Intent(getActivity(), LoginActivity.class));
             }
         });
 
@@ -152,7 +152,7 @@ public class RegistrationFragmentView extends Fragment {
 
         showToast(registrationSuccessful);
         if (registrationSuccessful) {
-            Intent intentLogin = new Intent(getActivity(), LoginActivityView.class);
+            Intent intentLogin = new Intent(getActivity(), LoginActivity.class);
             intentLogin.putExtra(getString(R.string.registration_email), registeredEmail);
             startActivity(intentLogin);
             resetFields();

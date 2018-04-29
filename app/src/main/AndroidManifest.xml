@@ -46,7 +46,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Views.Login.LoginActivityView"
+            android:name=".Views.Login.LoginActivity"
             android:theme="@style/LoginScreenTheme" />
         <activity
             android:name=".Views.Registration.RegistrationActivityView"

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".Views.Login.LoginFragmentView">
+    tools:context=".Views.Login.LoginFragment">
     <LinearLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"

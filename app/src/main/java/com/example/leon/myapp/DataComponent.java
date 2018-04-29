@@ -2,8 +2,8 @@ package com.example.leon.myapp;
 
 import com.example.leon.myapp.Presenter.Login.LoginActivityPresenter;
 import com.example.leon.myapp.Presenter.Registration.RegistrationActivityPresenter;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
-import com.example.leon.myapp.Views.Login.LoginFragmentView;
+import com.example.leon.myapp.Views.Login.LoginActivity;
+import com.example.leon.myapp.Views.Login.LoginFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 import com.example.leon.myapp.Views.Registration.RegistrationFragmentView;
 
@@ -17,10 +17,10 @@ import dagger.Component;
 public interface DataComponent {
     void inject(App app);
 
-    void inject(LoginActivityView loginActivityView);
+    void inject(LoginActivity loginActivity);
     void inject(LoginActivityPresenter loginActivityPresenter);
 
-    void inject(LoginFragmentView loginFragmentView);
+    void inject(LoginFragment loginFragment);
     void inject(RegistrationFragmentView registrationFragmentView);
 
     void inject(RegistrationActivityView registrationActivityView);

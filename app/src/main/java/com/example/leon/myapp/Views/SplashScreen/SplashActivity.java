@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.leon.myapp.R;
-import com.example.leon.myapp.Views.Login.LoginActivityView;
-import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -15,7 +13,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        //Intent intent = new Intent(this, LoginActivityView.class);
+        //Intent intent = new Intent(this, LoginActivity.class);
         //Intent intent = new Intent(this, MainActivity.class);
         Intent intent = new Intent(this, CustomNavigationDrawerActivity.class);
         startActivity(intent);

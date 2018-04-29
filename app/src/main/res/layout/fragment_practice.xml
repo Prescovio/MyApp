@@ -22,4 +22,10 @@
         android:id="@+id/btnLoadNavigationDrawerActivity"
         android:text="@string/load_navigation_drawer_activity"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLoadCustomNavigationDrawerActivity"
+        android:text="@string/load_custom_navigation_drawer_activity"/>
+
 </LinearLayout>

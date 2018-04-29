@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.leon.myapp.R;
+import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.Notification.NotificationActivity;
 import com.example.leon.myapp.Views.Main.Practice.Service.ServiceActivity;
@@ -59,6 +60,14 @@ public class PracticeFragment extends Fragment {
             }
         });
 
+        //LoadCustomNavigationDrawerActivity
+        Button loadCustomNavigationDrawerActivity = view.findViewById(R.id.btnLoadCustomNavigationDrawerActivity);
+        loadCustomNavigationDrawerActivity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onLoadCustomNavigationDrawerActivityClick(v);
+            }
+        });
+
         return view;
     }
 
@@ -82,5 +91,9 @@ public class PracticeFragment extends Fragment {
 
     public void onLoadNavigationDrawerActivityClick(View view) {
         startActivity(new Intent(getActivity(), NavigationDrawerActivity.class));
+    }
+
+    public void onLoadCustomNavigationDrawerActivityClick(View view) {
+        startActivity(new Intent(getActivity(), CustomNavigationDrawerActivity.class));
     }
 }

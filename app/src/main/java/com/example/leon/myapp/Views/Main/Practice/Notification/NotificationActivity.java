@@ -15,7 +15,7 @@ import android.widget.Button;
 import com.example.leon.myapp.*;
 import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Main.MainActivity;
-import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
+import com.example.leon.myapp.Views.Registration.RegistrationActivity;
 
 public class NotificationActivity extends AppCompatActivity {
     private static int count = 0;
@@ -63,7 +63,7 @@ public class NotificationActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
         PendingIntent mainPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, mainIntent, 0);
 
-        Intent registrationIntent = new Intent(getApplicationContext(), RegistrationActivityView.class);
+        Intent registrationIntent = new Intent(getApplicationContext(), RegistrationActivity.class);
         PendingIntent registrationPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, registrationIntent, 0);
 
         Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);

@@ -49,7 +49,7 @@
             android:name=".Views.Login.LoginActivity"
             android:theme="@style/LoginScreenTheme" />
         <activity
-            android:name=".Views.Registration.RegistrationActivityView"
+            android:name=".Views.Registration.RegistrationActivity"
             android:theme="@style/LoginScreenTheme" />
         <activity
             android:name=".Views.Main.MainActivity"

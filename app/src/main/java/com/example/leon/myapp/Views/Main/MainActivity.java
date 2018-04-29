@@ -19,7 +19,7 @@ import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Main.DefaultList.ListFragment;
 import com.example.leon.myapp.Views.Main.Practice.PracticeFragment;
-import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
+import com.example.leon.myapp.Views.Registration.RegistrationActivity;
 
 public class MainActivity extends AppCompatActivity {
     IntentFilter intentFilter;
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
             case R.id.mika:
-                startActivity(new Intent(this, RegistrationActivityView.class));
+                startActivity(new Intent(this, RegistrationActivity.class));
 
                 break;
             default:

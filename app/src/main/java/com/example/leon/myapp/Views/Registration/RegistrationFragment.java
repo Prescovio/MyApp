@@ -22,7 +22,7 @@ import com.example.leon.myapp.Views.Login.LoginActivity;
 
 import javax.inject.Inject;
 
-public class RegistrationFragmentView extends Fragment {
+public class RegistrationFragment extends Fragment {
     private EditText editTextFirstName, editTextSecondName, editTextAge, editTextEmailView, editTextPasswordView;
     private Button buttonRegister, buttonLogin;
     private String registeredEmail;
@@ -30,12 +30,12 @@ public class RegistrationFragmentView extends Fragment {
     @Inject
     protected RegistrationActivityPresenter presenter;
 
-    public RegistrationFragmentView() {
+    public RegistrationFragment() {
         // Required empty public constructor
     }
 
-    public static RegistrationFragmentView newInstance() {
-        RegistrationFragmentView fragment = new RegistrationFragmentView();
+    public static RegistrationFragment newInstance() {
+        RegistrationFragment fragment = new RegistrationFragment();
         return fragment;
     }
 

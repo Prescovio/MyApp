@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.leon.myapp.R;
+import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Main.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {

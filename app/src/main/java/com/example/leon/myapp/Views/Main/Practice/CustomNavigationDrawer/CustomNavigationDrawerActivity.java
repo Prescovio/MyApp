@@ -20,8 +20,8 @@ import com.example.leon.myapp.*;
 import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Login.LoginFragment;
 import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
-import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
-import com.example.leon.myapp.Views.Registration.RegistrationFragmentView;
+import com.example.leon.myapp.Views.Registration.RegistrationActivity;
+import com.example.leon.myapp.Views.Registration.RegistrationFragment;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -45,15 +45,23 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
 
         ListView listView = findViewById(R.id.navigation_drawer_list_view);
 
-        LinkedHashMap<String, Fragment> menuItems = new LinkedHashMap<>();
-        menuItems.put("MenuItem1", new LoginFragment());
-        menuItems.put("MenuItem2", new RegistrationFragmentView());
-        menuItems.put("MenuItem3", new CustomListFragment());
-        menuItems.put("MenuItem4", new DummyFragment());
+        LinkedHashMap<String, Fragment> menuLoginItems = new LinkedHashMap<>();
+        menuLoginItems.put("LoginFragment", new LoginFragment());
+        menuLoginItems.put("DummyFragment", new DummyFragment());
 
-        mItems.add(new CustomNavigationListItem("FirstItem", R.drawable.earth, menuItems, true));
-        mItems.add(new CustomNavigationListItem("SecondItem", R.drawable.jupiter, menuItems, false));
-        mItems.add(new CustomNavigationListItem("ThirdItem", R.drawable.neptune, menuItems, false));
+        mItems.add(new CustomNavigationListItem("Login", R.drawable.earth, menuLoginItems, true));
+
+        LinkedHashMap<String, Fragment> menuRegistrationItems = new LinkedHashMap<>();
+        menuRegistrationItems.put("RegistrationFragment", new RegistrationFragment());
+        menuRegistrationItems.put("DummyFragment", new DummyFragment());
+
+        mItems.add(new CustomNavigationListItem("Registration", R.drawable.jupiter, menuRegistrationItems, false));
+
+        LinkedHashMap<String, Fragment> menuListItems = new LinkedHashMap<>();
+        menuListItems.put("ListFragment", new CustomListFragment());
+        menuListItems.put("DummyFragment", new DummyFragment());
+
+        mItems.add(new CustomNavigationListItem("List", R.drawable.neptune, menuListItems, false));
 
         adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems);
         listView.setAdapter(adapter);
@@ -68,7 +76,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         LinkedHashMap<String, Fragment> menuItems = mItems.get(adapter.getSelectedPos()).getMenuItems();
         Fragment fragment = (Fragment)menuItems.values().toArray()[position];
         drawerLayout.closeDrawers();
-        //TODO load fragments
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
@@ -110,7 +118,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
 
                 break;
             case R.id.mika:
-                startActivity(new Intent(this, RegistrationActivityView.class));
+                startActivity(new Intent(this, RegistrationActivity.class));
 
                 break;
             default:

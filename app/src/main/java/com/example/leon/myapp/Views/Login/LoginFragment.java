@@ -19,7 +19,7 @@ import com.example.leon.myapp.Enumerations.ValidationErrorEnum;
 import com.example.leon.myapp.Presenter.Login.LoginActivityPresenter;
 import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Main.MainActivity;
-import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
+import com.example.leon.myapp.Views.Registration.RegistrationActivity;
 
 import javax.inject.Inject;
 
@@ -85,7 +85,7 @@ public class LoginFragment extends Fragment {
         //set listener on register button
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), RegistrationActivityView.class));
+                startActivity(new Intent(getActivity(), RegistrationActivity.class));
                 resetFields();
             }
         });

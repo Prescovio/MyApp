@@ -45,7 +45,6 @@ public class CustomListAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-
         return mItems.size();
     }
 
@@ -79,7 +78,7 @@ public class CustomListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        ListItem currentItem = (ListItem)mItems.get(position);
+        ListItem currentItem = mItems.get(position);
 
         viewHolder.imageView.setImageDrawable(mContext.getDrawable(currentItem.getImageId()));
         viewHolder.textView.setText(currentItem.getText());

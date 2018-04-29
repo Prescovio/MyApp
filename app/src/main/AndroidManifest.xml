@@ -61,7 +61,7 @@
 
         <activity android:name=".Views.Main.Practice.Notification.NotificationActivity" />
         <activity android:name=".Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity" />
-        <activity android:name=".Views.Main.Practice.NavigationDrawer.CustomNavigationDrawerActivity"></activity>
+        <activity android:name=".Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity"></activity>
     </application>
 
 </manifest>

@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="false">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,13 +25,23 @@
 
             <ListView
                 android:id="@+id/navigation_drawer_list_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:fastScrollEnabled="true"
+                android:persistentDrawingCache="scrolling"
+                android:scrollingCache="false"/>
 
             <ListView
                 android:id="@+id/navigation_drawer_menu_list_view"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:fastScrollEnabled="true"
+                android:persistentDrawingCache="scrolling"
+                android:scrollingCache="false"/>
 
 
         </LinearLayout>

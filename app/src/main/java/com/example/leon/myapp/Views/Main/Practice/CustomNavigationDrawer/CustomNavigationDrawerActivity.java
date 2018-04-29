@@ -1,30 +1,34 @@
-package com.example.leon.myapp.Views.Main.Practice.NavigationDrawer;
+package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.content.Intent;
-import android.support.design.internal.NavigationMenuItemView;
-import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.leon.myapp.*;
 import com.example.leon.myapp.Views.Login.LoginActivityView;
 import com.example.leon.myapp.Views.Registration.RegistrationActivityView;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 public class CustomNavigationDrawerActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private DrawerLayout drawerLayout;
+    private ArrayList<CustomNavigationListItem> mItems = new ArrayList<>();
+    private CustomNavigationListAdapter adapter;
+    private ListView mMenuListView;
+    private NavigationView mNavigationView;
+    private View mCurrentItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,26 +36,38 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_custom_navigation_drawer);
 
         drawerLayout = findViewById(R.id.custom_drawer_layout);
+        mNavigationView = findViewById(R.id.custom_nav_view);
 
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
 
         ListView listView = findViewById(R.id.navigation_drawer_list_view);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.planets, android.R.layout.simple_list_item_1);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
 
-        ListView menuListView = findViewById(R.id.navigation_drawer_menu_list_view);
-        // menuListAdapter = ArrayAdapter.createFromResource(this, R.menu.drawer_menu, android.R.layout.simple_list_item_1);
-        menuListView.setAdapter(adapter);
-        menuListView.setOnItemClickListener(this);
+        LinkedHashMap<String, Fragment> menuItems = new LinkedHashMap<>();
+        menuItems.put("MenuItem1", new DummyFragment());
+        menuItems.put("MenuItem2", new DummyFragment());
+        menuItems.put("MenuItem3", new DummyFragment());
+        menuItems.put("MenuItem4", new DummyFragment());
+
+        mItems.add(new CustomNavigationListItem("FirstItem", R.drawable.earth, menuItems, true));
+        mItems.add(new CustomNavigationListItem("SecondItem", R.drawable.jupiter, menuItems, false));
+        mItems.add(new CustomNavigationListItem("ThirdItem", R.drawable.neptune, menuItems, false));
+
+        adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems);
+        listView.setAdapter(adapter);
+        adapter.loadMenuItems(0);
+
+        mMenuListView = findViewById(R.id.navigation_drawer_menu_list_view);
+        mMenuListView.setOnItemClickListener(this);
     }
 
-    //AdapterView.OnItemClickListener implementation
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this, "Item: " + position, Toast.LENGTH_SHORT).show();
+        LinkedHashMap<String, Fragment> menuItems = mItems.get(adapter.getSelectedPos()).getMenuItems();
+        Fragment fragment = (Fragment)menuItems.values().toArray()[position];
+        drawerLayout.closeDrawers();
+        //TODO load fragments
     }
 
     @Override

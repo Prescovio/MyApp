@@ -3,7 +3,6 @@ package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 import android.support.v4.app.Fragment;
 
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * Created by Leon on 28.04.2018.
@@ -13,13 +12,13 @@ public class CustomNavigationListItem {
     private String mName;
     private int mImageId;
     private LinkedHashMap<String, Fragment> mMenuItems;
-    private boolean mIsActive;
+    private int mSelectedListItemPos;
 
-    public CustomNavigationListItem(String name, int imageId, LinkedHashMap<String, Fragment> menuItems, boolean isActive) {
+    public CustomNavigationListItem(String name, int imageId, LinkedHashMap<String, Fragment> menuItems) {
         this.mName = name;
         this.mImageId = imageId;
         this.mMenuItems = menuItems;
-        this.mIsActive = isActive;
+        this.mSelectedListItemPos = 0; //default select first
     }
 
     public String getName() {
@@ -46,11 +45,11 @@ public class CustomNavigationListItem {
         this.mMenuItems = menuItems;
     }
 
-    public boolean isActive() {
-        return mIsActive;
+    public int getSelectedListItemPosId() {
+        return mSelectedListItemPos;
     }
 
-    public void setActive(boolean active) {
-        mIsActive = active;
+    public void setSelectedListItemPosId(int selectedListItemPosId) {
+        this.mSelectedListItemPos = selectedListItemPosId;
     }
 }

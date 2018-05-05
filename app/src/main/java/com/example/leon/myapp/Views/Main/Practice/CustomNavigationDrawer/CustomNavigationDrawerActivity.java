@@ -1,6 +1,7 @@
 package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.content.Intent;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +32,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
     private ArrayList<CustomNavigationListItem> mItems = new ArrayList<>();
     private CustomNavigationListAdapter adapter;
     private ListView mMenuListView;
+    private View mPrevView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,19 +51,19 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         menuLoginItems.put("LoginFragment", new LoginFragment());
         menuLoginItems.put("DummyFragment", new DummyFragment());
 
-        mItems.add(new CustomNavigationListItem("Login", R.drawable.earth, menuLoginItems, true));
+        mItems.add(new CustomNavigationListItem("Login", R.drawable.earth, menuLoginItems));
 
         LinkedHashMap<String, Fragment> menuRegistrationItems = new LinkedHashMap<>();
         menuRegistrationItems.put("RegistrationFragment", new RegistrationFragment());
         menuRegistrationItems.put("DummyFragment", new DummyFragment());
 
-        mItems.add(new CustomNavigationListItem("Registration", R.drawable.jupiter, menuRegistrationItems, false));
+        mItems.add(new CustomNavigationListItem("Registration", R.drawable.jupiter, menuRegistrationItems));
 
         LinkedHashMap<String, Fragment> menuListItems = new LinkedHashMap<>();
         menuListItems.put("ListFragment", new CustomListFragment());
         menuListItems.put("DummyFragment", new DummyFragment());
 
-        mItems.add(new CustomNavigationListItem("List", R.drawable.neptune, menuListItems, false));
+        mItems.add(new CustomNavigationListItem("List", R.drawable.neptune, menuListItems));
 
         adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems);
         listView.setAdapter(adapter);
@@ -73,14 +75,27 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        LinkedHashMap<String, Fragment> menuItems = mItems.get(adapter.getSelectedPos()).getMenuItems();
+        CustomNavigationListItem currentItem = mItems.get(adapter.getSelectedPos());
+        currentItem.setSelectedListItemPosId(position);
+
+        if (mPrevView == null)
+            mPrevView = adapter.getDefaultView();
+
+        mPrevView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+        view.setBackgroundColor(getResources().getColor(R.color.listViewHighlighted));
+        mMenuListView.setSelection(position);
+
+        mPrevView = view;
+
+        LinkedHashMap<String, Fragment> menuItems = currentItem.getMenuItems();
         Fragment fragment = (Fragment)menuItems.values().toArray()[position];
         drawerLayout.closeDrawers();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
-        fragmentTransaction.addToBackStack(null);
+        //fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

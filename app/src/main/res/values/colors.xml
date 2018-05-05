@@ -24,4 +24,7 @@
     <!--EditText Font Colors-->
     <color name="editTextFont">#6E6E6E</color>
     <color name="editTextHintFont">#BDBDBD</color>
+
+    <!--ListView Font Colors-->
+    <color name="listViewHighlighted">#F0F0F5</color>
 </resources>

@@ -27,4 +27,5 @@
 
     <!--ListView Font Colors-->
     <color name="listViewHighlighted">#F0F0F5</color>
+    <color name="listViewLoaded">#F78C00</color>
 </resources>

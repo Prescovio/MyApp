@@ -33,6 +33,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
     private CustomNavigationListAdapter adapter;
     private ListView mMenuListView;
     private View mPrevView;
+    private CustomNavigationListItem mPrevItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,17 +77,34 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         CustomNavigationListItem currentItem = mItems.get(adapter.getSelectedPos());
-        currentItem.setSelectedListItemPosId(position);
 
-        if (mPrevView == null)
+        //get default highlighting
+        if (mPrevItem == null) {
+            mPrevItem = adapter.getDefaultItem();
             mPrevView = adapter.getDefaultView();
+        }
 
-        mPrevView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        //remove highlighting
+        if (mPrevItem != null && mPrevView != null) {
+            mPrevItem.setLoaded(false);
+            mPrevView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        }
 
-        view.setBackgroundColor(getResources().getColor(R.color.listViewHighlighted));
+        //remove loaded highlighting
+        View loadedView = adapter.getLoadedView();
+        if (loadedView != null)
+            loadedView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+        currentItem.setSelectedListItemPosId(position);
+        currentItem.setLoaded(true);
+
+        //view loaded color
+        view.setBackgroundColor(getResources().getColor(R.color.listViewLoaded));
         mMenuListView.setSelection(position);
 
+        //set current objects so they can be reset on next selection
         mPrevView = view;
+        mPrevItem = currentItem;
 
         LinkedHashMap<String, Fragment> menuItems = currentItem.getMenuItems();
         Fragment fragment = (Fragment)menuItems.values().toArray()[position];
@@ -95,7 +113,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
-        //fragmentTransaction.addToBackStack(null);
+        //fragmentTransaction.addToBackStack(null); //destroys highlighting
         fragmentTransaction.commit();
     }
 

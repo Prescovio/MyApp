@@ -13,12 +13,12 @@ public class CustomNavigationListItem {
     private int mImageId;
     private LinkedHashMap<String, Fragment> mMenuItems;
     private int mSelectedListItemPos;
+    private boolean mLoaded;
 
     public CustomNavigationListItem(String name, int imageId, LinkedHashMap<String, Fragment> menuItems) {
         this.mName = name;
         this.mImageId = imageId;
         this.mMenuItems = menuItems;
-        this.mSelectedListItemPos = 0; //default select first
     }
 
     public String getName() {
@@ -33,16 +33,8 @@ public class CustomNavigationListItem {
         return mImageId;
     }
 
-    public void setImageId(int imageId) {
-        this.mImageId = imageId;
-    }
-
     public LinkedHashMap<String, Fragment> getMenuItems() {
         return mMenuItems;
-    }
-
-    public void setMenuItems(LinkedHashMap<String, Fragment> menuItems) {
-        this.mMenuItems = menuItems;
     }
 
     public int getSelectedListItemPosId() {
@@ -51,5 +43,13 @@ public class CustomNavigationListItem {
 
     public void setSelectedListItemPosId(int selectedListItemPosId) {
         this.mSelectedListItemPos = selectedListItemPosId;
+    }
+
+    public boolean getLoaded() {
+        return mLoaded;
+    }
+
+    public void setLoaded(boolean loaded) {
+        this.mLoaded = loaded;
     }
 }

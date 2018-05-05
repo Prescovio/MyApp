@@ -29,7 +29,9 @@ public class CustomNavigationListAdapter extends BaseAdapter {
     private ListView mMenuListView;
     private int mSelectedPos;
     private ViewHolder mPrevViewHolder;
+    private CustomNavigationListItem mDefaultItem;
     private View mDefaultView;
+    private View mLoadedView;
     private boolean mFirstOpen;
 
     public CustomNavigationListAdapter(LayoutInflater layoutInflater, Context context, ArrayList<CustomNavigationListItem> items) {
@@ -111,7 +113,8 @@ public class CustomNavigationListAdapter extends BaseAdapter {
             //set highlighting visibility for first item
             viewHolder.imageView.setVisibility(View.VISIBLE);
 
-            //set hightlighted item
+            //set hightlighted
+
             mPrevViewHolder = viewHolder;
         }
 
@@ -133,8 +136,18 @@ public class CustomNavigationListAdapter extends BaseAdapter {
 
                 //set background color for current selected item
                 if (position == currentItem.getSelectedListItemPosId()) {
+                    mDefaultItem = currentItem;
                     mDefaultView = view;
-                    view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewHighlighted));
+
+                    //view is actually loaded, not just default selected
+                    if (currentItem.getLoaded()) {
+                        mLoadedView = view;
+                        view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewLoaded));
+                    }
+                    //default selection
+                    else {
+                        view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewHighlighted));
+                    }
                     mMenuListView.setSelection(position);
                 }
 
@@ -145,6 +158,14 @@ public class CustomNavigationListAdapter extends BaseAdapter {
 
     public View getDefaultView() {
         return mDefaultView;
+    }
+
+    public CustomNavigationListItem getDefaultItem() {
+        return mDefaultItem;
+    }
+
+    public View getLoadedView() {
+        return mLoadedView;
     }
 
     public int getSelectedPos() {

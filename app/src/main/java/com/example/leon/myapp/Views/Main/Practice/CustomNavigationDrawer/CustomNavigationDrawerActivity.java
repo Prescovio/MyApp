@@ -48,10 +48,12 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
 
         ListView listView = findViewById(R.id.navigation_drawer_list_view);
 
+        //create map for menu items (menuLogin, menuRegistration, menuListItems)
         LinkedHashMap<String, Fragment> menuLoginItems = new LinkedHashMap<>();
         menuLoginItems.put("LoginFragment", new LoginFragment());
         menuLoginItems.put("DummyFragment", new DummyFragment());
 
+        //add new item (picture) each has its own menu list
         mItems.add(new CustomNavigationListItem("Login", R.drawable.earth, menuLoginItems));
 
         LinkedHashMap<String, Fragment> menuRegistrationItems = new LinkedHashMap<>();
@@ -66,16 +68,21 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
 
         mItems.add(new CustomNavigationListItem("List", R.drawable.neptune, menuListItems));
 
+        //set custom adapter
         adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems);
         listView.setAdapter(adapter);
+
+        //load first item of picture listview
         adapter.loadMenuItems(0);
 
+        //get menulist
         mMenuListView = findViewById(R.id.navigation_drawer_menu_list_view);
         mMenuListView.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //get current picture item from adapter
         CustomNavigationListItem currentItem = mItems.get(adapter.getSelectedPos());
 
         //get default highlighting
@@ -95,6 +102,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         if (loadedView != null)
             loadedView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
+        //set current item loaded
         currentItem.setSelectedListItemPosId(position);
         currentItem.setLoaded(true);
 
@@ -106,10 +114,12 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         mPrevView = view;
         mPrevItem = currentItem;
 
+        //get fragment to load and close drawer
         LinkedHashMap<String, Fragment> menuItems = currentItem.getMenuItems();
         Fragment fragment = (Fragment)menuItems.values().toArray()[position];
         drawerLayout.closeDrawers();
 
+        //switch to fragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);

@@ -2,8 +2,6 @@ package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +37,7 @@ public class CustomNavigationListAdapter extends BaseAdapter {
         this.mContext = context;
         this.mItems = items;
 
+        //get child list view in order to set adapter later
         mMenuListView = ((Activity)mContext).findViewById(R.id.navigation_drawer_menu_list_view);
     }
 
@@ -72,11 +71,15 @@ public class CustomNavigationListAdapter extends BaseAdapter {
         final ViewHolder viewHolder;
 
         if (convertView == null) {
+            //inflate layout for each list item
             convertView = mLayoutInflater.inflate(R.layout.navigation_drawer_custom_list_item, null);
 
             viewHolder = new ViewHolder(convertView);
 
+            //set drawable
             viewHolder.imageButton.setImageDrawable(mContext.getDrawable(mItems.get(position).getImageId()));
+
+            //set onclicklistener
             viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,6 +124,10 @@ public class CustomNavigationListAdapter extends BaseAdapter {
         return convertView;
     }
 
+    /**
+     * load menu items for selected picture
+     * @param position
+     */
     public void loadMenuItems(int position) {
         final List<String> menuItemsList = new ArrayList<>();
 
@@ -129,6 +136,7 @@ public class CustomNavigationListAdapter extends BaseAdapter {
             menuItemsList.add(s);
         }
 
+        //set custom array adapter
         mMenuListView.setAdapter(new ArrayAdapter<String>(mContext, android.R.layout.simple_list_item_1, menuItemsList) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {

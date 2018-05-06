@@ -1,7 +1,6 @@
 package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.content.Intent;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +30,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
     private DrawerLayout drawerLayout;
     private ArrayList<CustomNavigationListItem> mItems = new ArrayList<>();
     private CustomNavigationListAdapter adapter;
+    private FragmentManager fragmentManager;
     private ListView mMenuListView;
     private View mPrevView;
     private CustomNavigationListItem mPrevItem;
@@ -45,6 +45,8 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher_round);
+
+        fragmentManager = getSupportFragmentManager();
 
         ListView listView = findViewById(R.id.navigation_drawer_list_view);
 
@@ -69,7 +71,7 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         mItems.add(new CustomNavigationListItem("List", R.drawable.neptune, menuListItems));
 
         //set custom adapter
-        adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems);
+        adapter = new CustomNavigationListAdapter(getLayoutInflater(), this, mItems, fragmentManager);
         listView.setAdapter(adapter);
 
         //load first item of picture listview
@@ -120,7 +122,6 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         drawerLayout.closeDrawers();
 
         //switch to fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, fragment);
         //fragmentTransaction.addToBackStack(null); //destroys highlighting

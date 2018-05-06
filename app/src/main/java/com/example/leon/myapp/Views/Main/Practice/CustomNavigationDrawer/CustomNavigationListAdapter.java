@@ -2,6 +2,9 @@ package com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.ListView;
 import com.example.leon.myapp.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -24,6 +28,7 @@ public class CustomNavigationListAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private ArrayList<CustomNavigationListItem> mItems;
+    private FragmentManager mFragmentManager;
     private ListView mMenuListView;
     private int mSelectedPos;
     private ViewHolder mPrevViewHolder;
@@ -32,10 +37,11 @@ public class CustomNavigationListAdapter extends BaseAdapter {
     private View mLoadedView;
     private boolean mFirstOpen;
 
-    public CustomNavigationListAdapter(LayoutInflater layoutInflater, Context context, ArrayList<CustomNavigationListItem> items) {
+    public CustomNavigationListAdapter(LayoutInflater layoutInflater, Context context, ArrayList<CustomNavigationListItem> items, FragmentManager fragmentManager) {
         this.mLayoutInflater = layoutInflater;
         this.mContext = context;
         this.mItems = items;
+        this.mFragmentManager = fragmentManager;
 
         //get child list view in order to set adapter later
         mMenuListView = ((Activity)mContext).findViewById(R.id.navigation_drawer_menu_list_view);
@@ -147,15 +153,19 @@ public class CustomNavigationListAdapter extends BaseAdapter {
                     mDefaultItem = currentItem;
                     mDefaultView = view;
 
-                    //view is actually loaded, not just default selected
-                    if (currentItem.getLoaded()) {
-                        mLoadedView = view;
-                        view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewLoaded));
-                    }
-                    //default selection
-                    else {
-                        view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewHighlighted));
-                    }
+                    mLoadedView = view;
+                    view.setBackgroundColor(mContext.getResources().getColor(R.color.listViewLoaded));
+
+                    //get fragment to load and close drawer
+                    LinkedHashMap<String, Fragment> menuItems = currentItem.getMenuItems();
+                    Fragment fragment = (Fragment)menuItems.values().toArray()[position];
+
+                    //switch to fragment
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    //fragmentTransaction.addToBackStack(null); //destroys highlighting
+                    fragmentTransaction.commit();
+
                     mMenuListView.setSelection(position);
                 }
 

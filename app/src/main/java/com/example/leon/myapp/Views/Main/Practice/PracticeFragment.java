@@ -1,13 +1,16 @@
 package com.example.leon.myapp.Views.Main.Practice;
 
+import android.app.PictureInPictureParams;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
@@ -68,6 +71,14 @@ public class PracticeFragment extends Fragment {
             }
         });
 
+        //EnterPIPMode
+        Button enterPIPMode = view.findViewById(R.id.btnEnterPIPMode);
+        enterPIPMode.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                enterPIPModeClick(v);
+            }
+        });
+
         return view;
     }
 
@@ -95,5 +106,14 @@ public class PracticeFragment extends Fragment {
 
     public void onLoadCustomNavigationDrawerActivityClick(View view) {
         startActivity(new Intent(getActivity(), CustomNavigationDrawerActivity.class));
+    }
+
+    public void enterPIPModeClick(View view) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            PictureInPictureParams.Builder pictureInPictureParams = new PictureInPictureParams.Builder();
+            getActivity().enterPictureInPictureMode(pictureInPictureParams.build());
+        } else {
+            Toast.makeText(getActivity(), "API Level below 26", Toast.LENGTH_SHORT).show();
+        }
     }
 }

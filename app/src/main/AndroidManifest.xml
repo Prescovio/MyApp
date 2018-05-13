@@ -38,8 +38,8 @@
         <activity
             android:name=".Views.SplashScreen.SplashActivity"
             android:noHistory="true"
-            android:theme="@style/SplashScreenTheme"
-            android:resizeableActivity="true">
+            android:resizeableActivity="true"
+            android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,35 +48,36 @@
         </activity>
         <activity
             android:name=".Views.Login.LoginActivity"
-            android:theme="@style/LoginScreenTheme"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true"
+            android:theme="@style/LoginScreenTheme" />
         <activity
             android:name=".Views.Registration.RegistrationActivity"
-            android:theme="@style/LoginScreenTheme"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true"
+            android:theme="@style/LoginScreenTheme" />
         <activity
             android:name=".Views.Main.MainActivity"
             android:configChanges="orientation"
             android:resizeableActivity="true"
-            android:supportsPictureInPicture="true"/>
+            android:supportsPictureInPicture="true" />
         <activity
             android:name=".Views.Main.Practice.Service.ServiceActivity"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true" />
 
         <!-- Services -->
         <service
             android:name=".Views.Main.Practice.Service.MyService"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true" />
 
         <activity
             android:name=".Views.Main.Practice.Notification.NotificationActivity"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true" />
         <activity
             android:name=".Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true" />
         <activity
             android:name=".Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true" />
+        <activity android:name=".Views.Main.Practice.DragAndDrop.DragAndDropActivity"></activity>
     </application>
 
 </manifest>

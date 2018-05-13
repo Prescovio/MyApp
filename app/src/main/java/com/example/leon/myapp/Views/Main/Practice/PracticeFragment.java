@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.leon.myapp.R;
 import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
+import com.example.leon.myapp.Views.Main.Practice.DragAndDrop.DragAndDropActivity;
 import com.example.leon.myapp.Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.Notification.NotificationActivity;
 import com.example.leon.myapp.Views.Main.Practice.Service.ServiceActivity;
@@ -79,6 +80,14 @@ public class PracticeFragment extends Fragment {
             }
         });
 
+        //LoadDragAndDropActivity
+        Button loadDragAndDropActivity = view.findViewById(R.id.btnLoadDragAndDrop);
+        loadDragAndDropActivity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onLoadDragAndDropActivityClick(v);
+            }
+        });
+
         return view;
     }
 
@@ -115,5 +124,9 @@ public class PracticeFragment extends Fragment {
         } else {
             Toast.makeText(getActivity(), "API Level below 26", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void onLoadDragAndDropActivityClick(View view) {
+        startActivity(new Intent(getActivity(), DragAndDropActivity.class));
     }
 }

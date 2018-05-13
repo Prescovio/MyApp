@@ -33,4 +33,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnEnterPIPMode"
         android:text="@string/enter_pip_mode"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLoadDragAndDrop"
+        android:text="@string/drag_and_drop"/>
 </LinearLayout>

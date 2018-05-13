@@ -38,7 +38,6 @@
 
     <!--Main-->
     <string name="activity_main_title">Main</string>
-    <string name="is_in_pip_mode">Is in PIP Mode</string>
 
     <!--Listviews-->
     <string name="mercury">Mercury</string>
@@ -59,6 +58,7 @@
     <string name="load_navigation_drawer_activity">Load Navigation Drawer Activity</string>
     <string name="load_custom_navigation_drawer_activity">Load Custom Navigation Drawer Activity</string>
     <string name="enter_pip_mode">Enter PIP Mode</string>
+    <string name="drag_and_drop">Drag and Drop</string>
 
     <!--Service-->
     <string name="start_service">Start Service</string>

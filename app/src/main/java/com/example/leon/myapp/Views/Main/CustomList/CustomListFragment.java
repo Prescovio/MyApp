@@ -35,6 +35,8 @@ public class CustomListFragment extends Fragment {
 
         ListView listView = view.findViewById(R.id.custom_list_list_view);
 
+        listItems.clear();
+
         listItems.add(new ListItem(R.drawable.mercury, getString(R.string.mercury)));
         listItems.add(new ListItem(R.drawable.venus, getString(R.string.venus)));
         listItems.add(new ListItem(R.drawable.earth, getString(R.string.earth)));

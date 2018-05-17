@@ -64,14 +64,15 @@ public class DragAndDropActivity extends AppCompatActivity implements View.OnDra
             case DragEvent.ACTION_DRAG_EXITED:
                 break;
             case DragEvent.ACTION_DROP:
-                // Dropped, reassign View to ViewGroup
-
                 for (CustomRecyclerViewListItem listItem : mItems) {
                     if (listItem.getDrawableId() == (int)event.getLocalState())
                     {
-                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                        fragmentTransaction.replace(R.id.drag_drop_linear_layout, listItem.getFragment());
-                        fragmentTransaction.commit();
+                        if (fragmentManager.findFragmentById(listItem.getFragment().getId()) == null) {
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.drag_drop_linear_layout, listItem.getFragment());
+                            fragmentTransaction.commit();
+                            break;
+                        }
                     }
                 }
 

@@ -1,5 +1,7 @@
 package com.example.leon.myapp.Views.Main.Practice.DragAndDrop;
 
+import android.support.v4.app.Fragment;
+
 /**
  * Created by Leon on 13.05.2018.
  */
@@ -7,10 +9,12 @@ package com.example.leon.myapp.Views.Main.Practice.DragAndDrop;
 public class CustomRecyclerViewListItem {
     private int mDrawableId;
     private String mText;
+    private Fragment mFragment;
 
-    public CustomRecyclerViewListItem(int drawableId, String text) {
+    public CustomRecyclerViewListItem(int drawableId, String text, Fragment fragment) {
         this.mDrawableId = drawableId;
         this.mText = text;
+        this.mFragment = fragment;
     }
 
     public int getDrawableId() {
@@ -27,5 +31,13 @@ public class CustomRecyclerViewListItem {
 
     public void setText(String text) {
         this.mText = text;
+    }
+
+    public Fragment getFragment() {
+        return this.mFragment;
+    }
+
+    public void setFragment(Fragment fragment) {
+        this.mFragment = fragment;
     }
 }

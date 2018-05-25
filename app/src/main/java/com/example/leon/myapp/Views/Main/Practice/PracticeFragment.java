@@ -1,6 +1,9 @@
 package com.example.leon.myapp.Views.Main.Practice;
 
+import android.app.PendingIntent;
 import android.app.PictureInPictureParams;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -12,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.leon.myapp.MyAppWidgetProvider;
 import com.example.leon.myapp.R;
+import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.DragAndDrop.DragAndDropActivity;
 import com.example.leon.myapp.Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity;
@@ -88,6 +93,15 @@ public class PracticeFragment extends Fragment {
             }
         });
 
+        //LoadAppWidget
+        Button loadAppWidget = view.findViewById(R.id.btnLoadAppWidget);
+        loadAppWidget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onLoadAppWidgetClick(v);
+            }
+        });
+
         return view;
     }
 
@@ -128,5 +142,18 @@ public class PracticeFragment extends Fragment {
 
     public void onLoadDragAndDropActivityClick(View view) {
         startActivity(new Intent(getActivity(), DragAndDropActivity.class));
+    }
+
+    public void onLoadAppWidgetClick(View view) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            AppWidgetManager appWidgetManager = getContext().getSystemService(AppWidgetManager.class);
+            ComponentName myProvider = new ComponentName(getContext(), MyAppWidgetProvider.class);
+
+            if (appWidgetManager.isRequestPinAppWidgetSupported()) {
+                Intent pinnedWidgetCallbackIntent = new Intent(getContext(), MyAppWidgetProvider.class);
+                PendingIntent successCallback = PendingIntent.getBroadcast(getContext(), 0, pinnedWidgetCallbackIntent, 0);
+                appWidgetManager.requestPinAppWidget(myProvider, null, successCallback);
+            }
+        }
     }
 }

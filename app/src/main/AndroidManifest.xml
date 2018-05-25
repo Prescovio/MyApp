@@ -35,6 +35,13 @@
         </activity>
         -->
 
+        <receiver android:name=".MyAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/my_app_widget_provider_info"/>
+        </receiver>
+
         <activity
             android:name=".Views.SplashScreen.SplashActivity"
             android:noHistory="true"
@@ -77,7 +84,11 @@
         <activity
             android:name=".Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity"
             android:resizeableActivity="true" />
-        <activity android:name=".Views.Main.Practice.DragAndDrop.DragAndDropActivity"></activity>
+        <activity android:name=".Views.Main.Practice.DragAndDrop.DragAndDropActivity" />
+        <activity
+            android:name=".MyAppWidgetConfigureActivity"
+            android:label="@string/title_activity_my_app_widget_configure"
+            android:theme="@style/MyAppTheme"></activity>
     </application>
 
 </manifest>

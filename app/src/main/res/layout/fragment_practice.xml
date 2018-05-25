@@ -39,4 +39,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnLoadDragAndDrop"
         android:text="@string/drag_and_drop"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLoadAppWidget"
+        android:text="@string/app_widget"/>
 </LinearLayout>

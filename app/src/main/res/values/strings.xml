@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MyApp</string>
 
+    <!--AppWidget-->
+    <string name="test_button">Test Button</string>
+
     <!--Toolbar-->
     <string name="mika">Mika</string>
     <string name="toolbar_title">Toolbar Title</string>
@@ -59,6 +62,7 @@
     <string name="load_custom_navigation_drawer_activity">Load Custom Navigation Drawer Activity</string>
     <string name="enter_pip_mode">Enter PIP Mode</string>
     <string name="drag_and_drop">Drag and Drop</string>
+    <string name="app_widget">App Widget</string>
 
     <!--Service-->
     <string name="start_service">Start Service</string>
@@ -90,5 +94,6 @@
     <string name="good_mood">Good Mood</string>
     <string name="neutral_mood">Neutral Mood</string>
     <string name="bad_mood">Bad Mood</string>
+    <string name="title_activity_my_app_widget_configure">MyAppWidgetConfigure</string>
 
 </resources>

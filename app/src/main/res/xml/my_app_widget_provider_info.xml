@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="40dp"
+    android:minWidth="180dp"
     android:minHeight="40dp"
     android:updatePeriodMillis="5000"
     android:previewImage="@drawable/mika"
     android:initialLayout="@layout/custom_my_app_widget_provider"
-    android:configure="com.example.leon.myapp.MyAppWidgetConfigureActivity"
+    android:configure="com.example.leon.myapp.Views.Widget.MyAppWidgetConfigureActivity"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen">
 

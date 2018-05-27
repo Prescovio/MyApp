@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.leon.myapp.MyAppWidgetProvider;
+import com.example.leon.myapp.Views.Widget.MyAppWidgetConfigureActivity;
+import com.example.leon.myapp.Views.Widget.MyAppWidgetProvider;
 import com.example.leon.myapp.R;
-import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Main.Practice.CustomNavigationDrawer.CustomNavigationDrawerActivity;
 import com.example.leon.myapp.Views.Main.Practice.DragAndDrop.DragAndDropActivity;
 import com.example.leon.myapp.Views.Main.Practice.NavigationDrawer.NavigationDrawerActivity;
@@ -152,8 +152,11 @@ public class PracticeFragment extends Fragment {
             if (appWidgetManager.isRequestPinAppWidgetSupported()) {
                 Intent pinnedWidgetCallbackIntent = new Intent(getContext(), MyAppWidgetProvider.class);
                 PendingIntent successCallback = PendingIntent.getBroadcast(getContext(), 0, pinnedWidgetCallbackIntent, 0);
-                appWidgetManager.requestPinAppWidget(myProvider, null, successCallback);
+                Bundle extras = new Bundle();
+                appWidgetManager.requestPinAppWidget(myProvider, extras, successCallback);
             }
+        } else {
+            Toast.makeText(getActivity(), "API Level below 26", Toast.LENGTH_SHORT).show();
         }
     }
 }

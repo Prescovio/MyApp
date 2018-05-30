@@ -35,13 +35,19 @@
         </activity>
         -->
 
+        <!-- Services -->
+        <service android:name=".Platform.Services.ServiceActivity.MyService"/>
+        <service android:name=".Platform.Services.Widget.WidgetUpdateIntentService"/>
+
+        <!-- Receivers -->
         <receiver android:name=".Views.Widget.MyAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/my_app_widget_provider_info"/>
         </receiver>
-        
+
+        <!--Activities-->
         <activity
             android:name=".Views.Widget.MyAppWidgetConfigureActivity"
             android:theme="@style/MyAppTheme">
@@ -76,11 +82,6 @@
             android:supportsPictureInPicture="true" />
         <activity
             android:name=".Views.Main.Practice.Service.ServiceActivity"
-            android:resizeableActivity="true" />
-
-        <!-- Services -->
-        <service
-            android:name=".Views.Main.Practice.Service.MyService"
             android:resizeableActivity="true" />
 
         <activity

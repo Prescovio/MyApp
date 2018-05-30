@@ -1,4 +1,4 @@
-package com.example.leon.myapp.Views.Main.Practice.Service;
+package com.example.leon.myapp.Platform.Services.ServiceActivity;
 
 import android.app.IntentService;
 import android.content.Intent;

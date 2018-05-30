@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.leon.myapp.*;
+import com.example.leon.myapp.Platform.Services.ServiceActivity.MyIntentService;
+import com.example.leon.myapp.Platform.Services.ServiceActivity.MyService;
 
 public class ServiceActivity extends AppCompatActivity {
     Intent serviceIntent;

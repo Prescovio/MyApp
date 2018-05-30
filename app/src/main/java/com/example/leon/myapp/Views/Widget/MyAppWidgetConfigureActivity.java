@@ -48,7 +48,7 @@ public class MyAppWidgetConfigureActivity extends AppCompatActivity {
             AppWidgetManager appWidgetManager = getApplicationContext().getSystemService(AppWidgetManager.class);
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), mAppWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
             RemoteViews views = new RemoteViews(this.getPackageName(), R.layout.custom_my_app_widget_provider);
             views.setOnClickPendingIntent(R.id.app_widget_test_button, pendingIntent);

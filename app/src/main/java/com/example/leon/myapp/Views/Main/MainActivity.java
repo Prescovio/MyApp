@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set default settings
+        PreferenceManager.setDefaultValues(this, R.xml.settings, false);
+
+        //read from settings
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //String settingsString = sharedPreferences.getString(SettingsActivity.)
 
         PracticeFragment practiceFragment = PracticeFragment.newInstance();
         ListFragment listFragment = ListFragment.newInstance();
@@ -149,17 +158,17 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId()) {
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+
+                break;
+
             case R.id.logout:
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
                 sendBroadcast(broadcastIntent);
 
                 startActivity(new Intent(this, LoginActivity.class));
-
-                break;
-
-            case R.id.settings:
-                startActivity(new Intent(this, SettingsActivity.class));
 
                 break;
 

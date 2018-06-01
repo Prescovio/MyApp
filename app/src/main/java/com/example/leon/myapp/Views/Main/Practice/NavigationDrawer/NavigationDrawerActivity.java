@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.leon.myapp.*;
 import com.example.leon.myapp.Views.Login.LoginActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationActivity;
+import com.example.leon.myapp.Views.Settings.SettingsActivity;
 
 public class NavigationDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
@@ -96,7 +97,14 @@ public class NavigationDrawerActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
+
                 break;
+
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+
+                break;
+
             case R.id.logout:
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
@@ -105,10 +113,12 @@ public class NavigationDrawerActivity extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
 
                 break;
+
             case R.id.mika:
                 startActivity(new Intent(this, RegistrationActivity.class));
 
                 break;
+
             default:
                 super.onOptionsItemSelected(item);
         }

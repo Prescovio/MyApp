@@ -22,6 +22,7 @@ import com.example.leon.myapp.Views.Login.LoginFragment;
 import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationFragment;
+import com.example.leon.myapp.Views.Settings.SettingsActivity;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -152,7 +153,14 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
+
                 break;
+
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+
+                break;
+
             case R.id.logout:
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction("com.package.ACTION_LOGOUT");
@@ -161,10 +169,12 @@ public class CustomNavigationDrawerActivity extends AppCompatActivity implements
                 startActivity(new Intent(this, LoginActivity.class));
 
                 break;
+
             case R.id.mika:
                 startActivity(new Intent(this, RegistrationActivity.class));
 
                 break;
+
             default:
                 super.onOptionsItemSelected(item);
         }

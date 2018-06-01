@@ -23,6 +23,7 @@ import com.example.leon.myapp.Views.Main.CustomList.CustomListFragment;
 import com.example.leon.myapp.Views.Main.DefaultList.ListFragment;
 import com.example.leon.myapp.Views.Main.Practice.PracticeFragment;
 import com.example.leon.myapp.Views.Registration.RegistrationActivity;
+import com.example.leon.myapp.Views.Settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private IntentFilter intentFilter;
@@ -156,10 +157,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, LoginActivity.class));
 
                 break;
+
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+
+                break;
+
             case R.id.mika:
                 startActivity(new Intent(this, RegistrationActivity.class));
 
                 break;
+
             default:
                 super.onOptionsItemSelected(item);
         }

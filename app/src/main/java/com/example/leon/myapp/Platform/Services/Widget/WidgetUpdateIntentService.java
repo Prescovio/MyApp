@@ -27,7 +27,7 @@ public class WidgetUpdateIntentService  extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this, "update widget intent service starting", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "update widget intent service starting", Toast.LENGTH_SHORT).show();
 
         mAppWidgetManager = AppWidgetManager.getInstance(this);
         mComponentName = new ComponentName(getApplicationContext(), MyAppWidgetProvider.class);

@@ -5,11 +5,13 @@
         <item>Test2</item>
         <item>Test3</item>
     </string-array>
+
     <integer-array name="int_array_test">
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </integer-array>
+
     <string-array name="planets">
         <item>Merkur</item>
         <item>Venus</item>
@@ -20,4 +22,19 @@
         <item>Uranus</item>
         <item>Neptun</item>
     </string-array>
+
+    <string-array name="settings_list">
+        <item>List Setting 1</item>
+        <item>List Setting 2</item>
+        <item>List Setting 3</item>
+        <item>List Setting 4</item>
+    </string-array>
+
+    <string-array name="settings_list_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
 </resources>

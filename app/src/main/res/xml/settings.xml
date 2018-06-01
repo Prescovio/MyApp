@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:key="first_preference_category"
+        android:title="@string/first_preference_category">
+
+        <CheckBoxPreference
+            android:key="check_box_preference"
+            android:title="@string/check_box_preference"
+            android:summary="@string/custom_summary"
+            android:defaultValue="true"/>
+
+        <ListPreference
+            android:id="@+id/list_preference"
+            android:dependency="check_box_preference"
+            android:key="list_preference"
+            android:title="@string/list_preference"
+            android:dialogTitle="@string/list_preference_dialog_title"
+            android:entries="@array/settings_list"
+            android:entryValues="@array/settings_list_values"
+            android:defaultValue="@string/list_default_value" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="second_preference_category"
+        android:title="@string/second_preference_category">
+
+        <Preference
+            android:key="preference"
+            android:title="@string/preference"
+            android:summary="@string/custom_summary" />
+
+        <PreferenceScreen
+            android:key="preference_screen"
+            android:title="@string/preference_screen"
+            android:persistent="false" >
+
+            <RingtonePreference
+                android:key="ringtone_preference"
+                android:title="@string/ringtone_preference"
+                android:ringtoneType="notification" />
+
+            <Preference
+                android:title="@string/preference_intent">
+                <intent
+                    android:action="android.intent.action.VIEW"
+                    android:data="http://www.google.com" />
+            </Preference>
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

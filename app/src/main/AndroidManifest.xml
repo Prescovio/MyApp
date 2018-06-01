@@ -35,19 +35,23 @@
         </activity>
         -->
 
+
         <!-- Services -->
-        <service android:name=".Platform.Services.ServiceActivity.MyService"/>
-        <service android:name=".Platform.Services.Widget.WidgetUpdateIntentService"/>
+        <service android:name=".Platform.Services.ServiceActivity.MyService" />
+        <service android:name=".Platform.Services.Widget.WidgetUpdateIntentService" />
 
         <!-- Receivers -->
         <receiver android:name=".Views.Widget.MyAppWidgetProvider">
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/my_app_widget_provider_info"/>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/my_app_widget_provider_info" />
         </receiver>
 
-        <!--Activities-->
+        <!-- Activities -->
         <activity
             android:name=".Views.Widget.MyAppWidgetConfigureActivity"
             android:theme="@style/MyAppTheme">
@@ -55,7 +59,6 @@
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Views.SplashScreen.SplashActivity"
             android:noHistory="true"
@@ -83,7 +86,6 @@
         <activity
             android:name=".Views.Main.Practice.Service.ServiceActivity"
             android:resizeableActivity="true" />
-
         <activity
             android:name=".Views.Main.Practice.Notification.NotificationActivity"
             android:resizeableActivity="true" />
@@ -95,8 +97,11 @@
             android:resizeableActivity="true" />
         <activity
             android:name=".Views.Main.Practice.DragAndDrop.DragAndDropActivity"
-            android:resizeableActivity="true"/>
-
+            android:resizeableActivity="true" />
+        <activity
+            android:name=".Views.Settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/MyAppTheme"></activity>
     </application>
 
 </manifest>

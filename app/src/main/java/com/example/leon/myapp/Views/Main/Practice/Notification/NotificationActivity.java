@@ -1,5 +1,6 @@
 package com.example.leon.myapp.Views.Main.Practice.Notification;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,6 +53,13 @@ public class NotificationActivity extends AppCompatActivity {
         createCustomNotification.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 onCreateCustomNotificationClick(view);
+            }
+        });
+
+        Button createGroupNotification = (Button)findViewById(R.id.btnCreateGroupNotification);
+        createGroupNotification.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                onCreateGroupNotificationClick(view);
             }
         });
     }
@@ -188,7 +197,43 @@ public class NotificationActivity extends AppCompatActivity {
         notificationManager.notify(count++, mBuilder.build());
     }
 
-    //TODO custom notification
+    /**
+     * creates group notification
+     * @param view
+     */
+    public void onCreateGroupNotificationClick(View view) {
+        int SUMMARY_ID = 0;
+        String GROUP_NOTIFICATION_KEY = "com.example.leon.myapp.GROUP_NOTIFICATION_KEY";
 
-    //TODO group notifications
+        Notification notification = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.mika)
+                .setContentTitle("First Title")
+                .setContentText("First Content")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."))
+                .setGroup(GROUP_NOTIFICATION_KEY)
+                .build();
+
+        Notification second_notification = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.mika)
+                .setContentTitle("Second Title")
+                .setContentText("Second Content")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."))
+                .setGroup(GROUP_NOTIFICATION_KEY)
+                .build();
+
+        Notification summaryNotification =  new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.mika)
+                .setContentTitle("Summary Content Title")
+                .setContentText("Summary Content")
+                .setSmallIcon(R.drawable.mika)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("Much longer text that cannot fit one line..."))
+                .setGroup(GROUP_NOTIFICATION_KEY)
+                .setGroupSummary(true)
+                .build();
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(1, notification);
+        notificationManager.notify(2, second_notification);
+        notificationManager.notify(SUMMARY_ID, summaryNotification);
+    }
 }

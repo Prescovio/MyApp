@@ -31,4 +31,10 @@
         android:id="@+id/btnCreateCustomNotification"
         android:text="@string/create_custom_notification" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCreateGroupNotification"
+        android:text="@string/create_group_notification" />
+
 </LinearLayout>

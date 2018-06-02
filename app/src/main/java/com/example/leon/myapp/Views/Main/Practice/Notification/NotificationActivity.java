@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RemoteViews;
 
 import com.example.leon.myapp.*;
 import com.example.leon.myapp.Views.Login.LoginActivity;
@@ -174,6 +175,17 @@ public class NotificationActivity extends AppCompatActivity {
      * @param view
      */
     public void onCreateCustomNotificationClick(View view) {
+        RemoteViews notificationLayout = new RemoteViews(getPackageName(), R.layout.custom_notification);
+        RemoteViews notificationLayoutExpanded = new RemoteViews(getPackageName(), R.layout.custom_notification_expanded);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+                .setSmallIcon(R.drawable.mika)
+                .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                .setCustomContentView(notificationLayout)
+                .setCustomBigContentView(notificationLayoutExpanded);
+
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(count++, mBuilder.build());
     }
 
     //TODO custom notification

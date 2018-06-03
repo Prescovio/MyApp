@@ -1,12 +1,14 @@
 package com.example.leon.myapp.Views.Main.Practice.Notification;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -21,7 +23,8 @@ import com.example.leon.myapp.Views.Main.MainActivity;
 import com.example.leon.myapp.Views.Registration.RegistrationActivity;
 
 public class NotificationActivity extends AppCompatActivity {
-    private static int count = 0;
+    private String CHANNEL_ID = "com.example.leon.myapp.NOTIFICATION_CHANNEL";
+    private static int count = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class NotificationActivity extends AppCompatActivity {
                 onCreateGroupNotificationClick(view);
             }
         });
+
+        this.createNotificationChannel();
     }
 
     /**
@@ -79,7 +84,7 @@ public class NotificationActivity extends AppCompatActivity {
         Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
         PendingIntent loginPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, loginIntent, 0);
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setContentTitle("Content Title")
                 .setContentText("Content")
@@ -107,7 +112,7 @@ public class NotificationActivity extends AppCompatActivity {
      * @param view
      */
     public void onCreateProgressbarNotificationClick(View view) {
-        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+        final NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setOngoing(false)
                 .setAutoCancel(true)
@@ -162,7 +167,7 @@ public class NotificationActivity extends AppCompatActivity {
      */
     public void onCreateExpandedNotificationClick(View view) {
         Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mika);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setContentTitle("Content Title")
                 .setContentText("Content")
@@ -187,7 +192,7 @@ public class NotificationActivity extends AppCompatActivity {
         RemoteViews notificationLayout = new RemoteViews(getPackageName(), R.layout.custom_notification);
         RemoteViews notificationLayoutExpanded = new RemoteViews(getPackageName(), R.layout.custom_notification_expanded);
 
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext())
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
                 .setCustomContentView(notificationLayout)
@@ -205,7 +210,7 @@ public class NotificationActivity extends AppCompatActivity {
         int SUMMARY_ID = 0;
         String GROUP_NOTIFICATION_KEY = "com.example.leon.myapp.GROUP_NOTIFICATION_KEY";
 
-        Notification notification = new NotificationCompat.Builder(getApplicationContext())
+        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setContentTitle("First Title")
                 .setContentText("First Content")
@@ -213,7 +218,7 @@ public class NotificationActivity extends AppCompatActivity {
                 .setGroup(GROUP_NOTIFICATION_KEY)
                 .build();
 
-        Notification second_notification = new NotificationCompat.Builder(getApplicationContext())
+        Notification second_notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setContentTitle("Second Title")
                 .setContentText("Second Content")
@@ -221,7 +226,7 @@ public class NotificationActivity extends AppCompatActivity {
                 .setGroup(GROUP_NOTIFICATION_KEY)
                 .build();
 
-        Notification summaryNotification =  new NotificationCompat.Builder(getApplicationContext())
+        Notification summaryNotification =  new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                 .setSmallIcon(R.drawable.mika)
                 .setContentTitle("Summary Content Title")
                 .setContentText("Summary Content")
@@ -232,8 +237,25 @@ public class NotificationActivity extends AppCompatActivity {
                 .build();
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1, notification);
-        notificationManager.notify(2, second_notification);
+        notificationManager.notify(count++, notification);
+        notificationManager.notify(count++, second_notification);
         notificationManager.notify(SUMMARY_ID, summaryNotification);
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= 26) {
+            CharSequence name = getString(R.string.notification_channel_name);
+            String description = getString(R.string.notification_channel_description);
+
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.enableLights(true);
+            channel.setLightColor(R.color.light_color);
+            channel.setVibrationPattern(new long[] { 5, 10, 5});
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }

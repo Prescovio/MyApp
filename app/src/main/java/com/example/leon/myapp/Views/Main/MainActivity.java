@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         //read from settings
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //TODO read out settings
         //String settingsString = sharedPreferences.getString(SettingsActivity.)
 
         PracticeFragment practiceFragment = PracticeFragment.newInstance();
